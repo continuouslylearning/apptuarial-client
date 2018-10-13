@@ -20,9 +20,8 @@ class LoginForm extends React.Component{
         <Field component={Input} type='text' name='username' id='username'/>
         <label htmlFor='password'>Password</label>
         <Field component={Input} type='password' name='password' id='password'/>
-        <button type='submit' disable={this.props.pristine || this.props.submitting}>LOGIN</button>
+        <button type='submit' disabled={this.props.pristine || this.props.submitting}>LOGIN</button><br/>
         <Link to='/register'>Register</Link>
-        <Link to='/policies'>Policies</Link>
       </form>
     );
   }
