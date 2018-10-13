@@ -1,0 +1,21 @@
+h1 {
+  font-size: 3.5em;
+  color: white;
+  font-weight: bold;
+  font-family: "Computer Modern Sans", sans-serif;
+  text-align: center;
+}
+
+header {
+  background-color: lightcoral;
+}
+
+header button {
+  float: right;
+  border: 0px;
+  font-size: 1em;
+  background-color: red;
+  color: white;
+  height: 2em;
+  width: 10em;
+}

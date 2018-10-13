@@ -1,0 +1,18 @@
+form {
+  display: table;
+  margin: 2em auto;
+}
+
+form input {
+  display: block;
+  margin-bottom: 2em;
+}
+
+form button {
+  font-size: 1em;
+  background-color: red;
+  color: white;
+  border: 0px;
+  width: 10em;
+  height: 2.5em;
+}
