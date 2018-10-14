@@ -1,6 +1,7 @@
 form {
   display: table;
   margin: 2em auto;
+  border: black 5px;
 }
 
 form input {
@@ -15,4 +16,9 @@ form button {
   border: 0px;
   width: 10em;
   height: 2.5em;
+}
+
+.error {
+  color: red;
+  font-size: .8em;
 }

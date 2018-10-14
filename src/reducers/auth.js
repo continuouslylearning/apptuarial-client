@@ -3,7 +3,8 @@ import { AUTH_REQUEST, AUTH_REQUEST_SUCCESS, AUTH_REQUEST_ERROR, CLEAR_AUTH, SET
 const initialState = {
   error: null, 
   loading: false,
-  authToken: null
+  authToken: null,
+  currentUser: null
 };
 
 export default function(state = initialState, action){

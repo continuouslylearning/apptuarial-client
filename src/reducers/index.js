@@ -6,7 +6,11 @@ import { FETCH_POLICIES_SUCCESS } from '../actions/policies';
 function policiesReducer(state = [], action){
   switch(action.type){
   case FETCH_POLICIES_SUCCESS:{
-    return action.policies;
+    return action.policies.map(policy => ({
+      ...policy,
+      effectiveDate: new Date(policy.effectiveDate),
+      expirationDate: new Date(policy.expirationDate)
+    }));
   }
   default: {
     return state;

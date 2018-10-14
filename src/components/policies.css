@@ -1,0 +1,44 @@
+ul {
+  display: grid;
+  justify-items: center;
+  font-size: .8em;
+  /* background-color: #f0f5f5; */
+  display: table;
+  width: 100%;
+  padding: 0%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul li {
+  width: 100%;
+  padding: 1em;
+  margin: 0px auto;
+  display: table;
+  text-align: left;
+  display: inline-block;
+}
+
+ul li p, ul li h2 {
+  margin: .5em;
+}
+ul li:hover {
+  background-color: lightblue;
+}
+
+button.add {
+  border: 0px;
+  background-color: red;
+  color: white;
+  float: right;
+  height: 3em;
+}
+
+
+@media only screen and (min-width: 640px){
+
+  ul li {
+    width: 33.333333%;
+  }
+
+}

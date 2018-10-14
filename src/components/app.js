@@ -1,30 +1,34 @@
 import React from 'react';
-import LoginForm from './login-form';
+import LandingPage from './landing-page';
 import RegistrationForm from './registration-form';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import PolicyForm from './policy-form';
-import { fetchPolicies } from '../actions/policies';
+import Dashboard from './dashboard';
 import { connect } from 'react-redux';
 import Header from './header';
 
 class App extends React.Component{
 
-  componentDidMount(){
-    this.props.dispatch(fetchPolicies());
-  }
-
   render(){
+
     return (
-      <Router>
-        <div className='container'>
-          <Header/>
-          <Route component={PolicyForm} exact path='/policy/add'/>
-          <Route component={LoginForm} exact path='/login'/>
-          <Route component={RegistrationForm} exact path='/register'/>
-        </div>
-      </Router>
+      <div className='container'>
+        <Header/>
+        <Router>
+          <main>
+            <Route component={PolicyForm} exact path='/policy/add'/>
+            <Route component={LandingPage} exact path='/login'/>
+            <Route component={RegistrationForm} exact path='/register'/>
+            <Route component={Dashboard} path='/dashboard'/>
+          </main>
+        </Router>
+      </div>
     );
   }
 }
 
-export default connect()(App);
+const mapStateToProps = state => ({
+  loggedIn: state.auth.currentUser !== null
+});
+
+export default connect(mapStateToProps)(App);
