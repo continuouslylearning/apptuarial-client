@@ -2,34 +2,33 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './policies.css';
 
-class Policy extends React.Component{
+class ClaimsList extends React.Component{
 
   render(){
     const options = { year: 'numeric', day: 'numeric', month: 'long' };
     
-    const policies = this.props.policies
+    const claims = this.props.claims
       .sort((a,b) => b.accidentDate - a.accidentDate)
-      .map(({ id, status }) =>
+      .map(({ id, status, accidentDate, caseReserve, transactions }) =>
         <li key={id} className='policy'>
           <h2>Claim id: {id}</h2>
-          <p>Status: </p>
-          <p>Effective Date: {effectiveDate.toLocaleDateString('en-US', options)}</p>
-          <p>Expiration Date: {expirationDate.toLocaleDateString('en-US', options)}</p>
-          <p>Exposures: {exposures}</p>
-          <p>Premium: {premium}</p>
+          <p>Status: {status}</p>
+          <p>Accident Date: {accidentDate.toLocaleDateString('en-US', options)}</p>
+          <p>Case Reserve: {caseReserve}</p>
+          <p>Number of transactions: {transactions.length}</p>
         </li>
       );
 
     return (
       <ul>
-        {policies}
+        {claims}
       </ul>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  policies: state.policies ? state.policies : []
+  claims: state.claims
 });
 
-export default connect(mapStateToProps)(Policy);
+export default connect(mapStateToProps)(ClaimsList);

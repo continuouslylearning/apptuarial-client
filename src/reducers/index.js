@@ -21,10 +21,14 @@ function policiesReducer(state = [], action){
 
 function claimsReducer(state = [], action){
   if(action.type === FETCH_CLAIMS_SUCCESS){
-    return {
-      ...state,
-      claims: action.claims
-    };
+    return action.claims.map(claim => ({
+      ...claim,
+      accidentDate: new Date(claim.accidentDate),
+      transactions: claim.transactions.map(transaction => ({
+        ...transaction,
+        transactionDate: new Date(transaction.transactionDate)
+      }))
+    }));
   }
   return state;
 }

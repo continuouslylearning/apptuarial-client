@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 import RequiresLogin from './requires-login';
 import PoliciesList from './policy-list';
+import ClaimsList from './claims-list';
 import PolicyForm from './policy-form';
 import Menu from './menu';
 import Ratio from './ratios';
 import { fetchPolicies } from '../actions/policies';
 import { fetchClaims } from '../actions/claims';
+
 
 class Dashboard extends React.Component {
 
@@ -23,6 +25,7 @@ class Dashboard extends React.Component {
         <Route component={Menu} exact path='/dashboard'/>
         <Route component={PolicyForm} exact path='/dashboard/policies/add'/>
         <Route component={PoliciesList} exact path='/dashboard/policies/list'/>
+        <Route component={ClaimsList} exact path='/dashboard/claims/list'/>
         <Route component={Ratio} path='/dashboard/ratios'/>
       </div>
     );
