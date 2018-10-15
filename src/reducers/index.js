@@ -5,18 +5,14 @@ import { FETCH_POLICIES_SUCCESS } from '../actions/policies';
 import { FETCH_CLAIMS_SUCCESS } from '../actions/claims';
 
 function policiesReducer(state = [], action){
-  switch(action.type){
-  case FETCH_POLICIES_SUCCESS:{
+  if(action.type === FETCH_POLICIES_SUCCESS){
     return action.policies.map(policy => ({
       ...policy,
       effectiveDate: new Date(policy.effectiveDate),
       expirationDate: new Date(policy.expirationDate)
     }));
   }
-  default: {
-    return state;
-  }
-  }
+  return state;
 }
 
 function claimsReducer(state = [], action){

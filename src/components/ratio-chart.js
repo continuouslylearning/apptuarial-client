@@ -1,8 +1,6 @@
 import React from 'react';
 import { Bar } from 'react-chartjs';
 
-const fillColor = 'rgba(151,187,205,0.5)';
-
 export default function Chart(props){
 
   const { labels, label, dataset } = props;
@@ -11,7 +9,7 @@ export default function Chart(props){
     labels,
     datasets: [{
       label,
-      fillColor,
+      fillColor: 'rgba(151,187,205,0.5)',
       data: dataset
     }]
   };

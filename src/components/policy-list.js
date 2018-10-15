@@ -1,28 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './policies.css';
+import PolicyItem from './policy-item';
+import List from './list';
+import './list.css';
 
-class Policy extends React.Component{
+class PoliciesPage extends React.Component{
 
   render(){
-    const options = { year: 'numeric', day: 'numeric', month: 'long' };
-    
-    const policies = this.props.policies
-      .sort((a,b) => a.effectiveDate - b.effectiveDate)
-      .map(({ id, effectiveDate, expirationDate, exposures, premium }) =>
-        <li key={id} className='policy'>
-          <h2>Policy Id: {id}</h2>
-          <p>Effective Date: {effectiveDate.toLocaleDateString('en-US', options)}</p>
-          <p>Expiration Date: {expirationDate.toLocaleDateString('en-US', options)}</p>
-          <p>Exposures: {exposures}</p>
-          <p>Premium: {premium}</p>
-        </li>
-      );
+
+    const policies = this.props.policies.sort((a,b) => b.effectiveDate - a.effectiveDate);
+    const PolicyList = List()(PolicyItem);
 
     return (
-      <ul>
-        {policies}
-      </ul>
+      <PolicyList data={policies}/>
     );
   }
 }
@@ -31,4 +21,4 @@ const mapStateToProps = state => ({
   policies: state.policies ? state.policies : []
 });
 
-export default connect(mapStateToProps)(Policy);
+export default connect(mapStateToProps)(PoliciesPage);

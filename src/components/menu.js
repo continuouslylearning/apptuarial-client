@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, Navlink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './menu.css';
 
-function Menu(props){
+function Menu(){
 
   return (
     <ul className='menu'>
