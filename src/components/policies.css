@@ -2,10 +2,10 @@ ul {
   display: grid;
   justify-items: center;
   font-size: .8em;
-  /* background-color: #f0f5f5; */
   display: table;
   width: 100%;
   padding: 0%;
+  margin-top: 2em;
   margin-left: auto;
   margin-right: auto;
 }
@@ -23,7 +23,7 @@ ul li p, ul li h2 {
   margin: .5em;
 }
 ul li:hover {
-  background-color: lightblue;
+  background-color: rgba(151,187,205,0.5);
 }
 
 button.add {
@@ -34,6 +34,9 @@ button.add {
   height: 3em;
 }
 
+.policy {
+  border: 1px dotted rgba(151,187,205,0.5);
+}
 
 @media only screen and (min-width: 640px){
 

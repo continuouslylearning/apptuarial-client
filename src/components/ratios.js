@@ -1,5 +1,7 @@
 import React from 'react';
+import './ratios.css';
 import { connect } from 'react-redux';
+import { Bar } from 'react-chartjs';
 
 class Ratios extends React.Component {
   /* 
@@ -11,10 +13,10 @@ class Ratios extends React.Component {
 
     const currentYear = new Date(Date.now()).getFullYear();
     let statistics = [];
-    for(let i = currentYear; i > currentYear - 5; i--){
+    for(let i = currentYear - 4; i <= currentYear; i++){
       const year = i;
-      const startOfYear = new Date(year, 1);
-      const endOfYear = new Date(year + 1, 1);
+      const startOfYear = new Date(year, 0);
+      const endOfYear = new Date(year + 1, 0);
 
       const initialValue = {
         earnedPremium: 0,
@@ -26,12 +28,27 @@ class Ratios extends React.Component {
         year
       });
     }
-    console.log(statistics);
 
-  
+    const labels = statistics.map(({ year }) => year);
+    const data = statistics.map(({ earnedExposures, earnedPremium }) => earnedExposures ? (earnedPremium / earnedExposures).toFixed(2) : 0);
 
+    const premiumData = {
+      labels,
+      datasets: [{
+        label: 'Average Premium',
+        fillColor: 'rgba(151,187,205,0.5)',
+        data: data
+      }]
+    };
+   
     return (
-      null
+      <div className='ratios'>
+        <h2>INSURANCE RATIOS</h2>
+        <div className='chart'>
+          <h3>Average Premium</h3>
+          <Bar data={premiumData} width={400} height={250}/>
+        </div>
+      </div>
     );
   }
 }

@@ -41,6 +41,7 @@ export const login = (username, password) => dispatch => {
       const currentUser = jwtDecode(authToken).user;
       dispatch(setAuthToken(authToken));
       dispatch(authRequestSuccess(currentUser));
+      localStorage.setItem('authToken', authToken);
     })
     .catch(err => dispatch(authRequest(err)));
 };

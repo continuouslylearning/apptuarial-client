@@ -3,15 +3,21 @@ import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import './header.css';
 
-function HeaderBar(props){
-  const logout = props.loggedIn ? <button onClick={() => props.dispatch(clearAuth())}>LOGOUT</button> : null;
-  
-  return (
-    <header>
-      <h1>Apptuarial</h1>
-      {logout}
-    </header>
-  );
+class HeaderBar extends React.Component{
+
+  logout(){
+    this.props.dispatch(clearAuth());
+    localStorage.removeItem('authToken');
+  }
+  render(){
+    const logout = this.props.loggedIn ? <button onClick={() => this.logout()}>LOGOUT</button> : null;
+    return (
+      <header>
+        <h1>Apptuarial</h1>
+        {logout}
+      </header>
+    );
+  }
 }
 
 const mapStateToProps = state => {

@@ -16,7 +16,7 @@ class App extends React.Component{
         <Header/>
         <Router>
           <main>
-            <Route component={PolicyForm} exact path='/policy/add'/>
+            <Redirect from='/' to='/login'/>
             <Route component={LandingPage} exact path='/login'/>
             <Route component={RegistrationForm} exact path='/register'/>
             <Route component={Dashboard} path='/dashboard'/>

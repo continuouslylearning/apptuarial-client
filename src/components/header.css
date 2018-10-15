@@ -1,20 +1,24 @@
-h1 {
+header h1 {
   font-size: 3.5em;
-  color: white;
+  display: inline-block;
+  color: lightcoral;
   font-weight: bold;
   font-family: "Computer Modern Sans", sans-serif;
-  text-align: center;
 }
 
 header {
-  background-color: lightcoral;
+  width: 100%;
+  text-align: center;
+  padding: 0px;
+  background-color:white;
+  /* background-color: lightcoral; */
 }
 
-header button {
-  float: right;
+header button { 
+  display: block;
   border: 0px;
   font-size: 1em;
-  background-color: red;
+  background-color: inherit; 
   color: white;
   height: 2em;
   width: 10em;

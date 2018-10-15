@@ -1,16 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Redirect, Link } from 'react-router-dom';
-import Policies from './policies';
+import { Route, Link } from 'react-router-dom';
+import RequiresLogin from './requires-login';
+import PoliciesList from './policy-list';
+import PolicyForm from './policy-form';
+import Menu from './menu';
+import Ratio from './ratios';
+import { fetchPolicies } from '../actions/policies';
+import { fetchClaims } from '../actions/claims';
 
 class Dashboard extends React.Component {
 
+  
+  componentDidMount(){
+    this.props.dispatch(fetchPolicies());
+    this.props.dispatch(fetchClaims());
+  }
+
   render(){
-    if(!this.props.loggedIn) return <Redirect to='/login'/>;
     return (
       <div>
-        <Link to='/dashboard/policies'>Policies</Link>
-        <Route component={Policies} path='/dashboard/policies'/>
+        <Route component={Menu} exact path='/dashboard'/>
+        <Route component={PolicyForm} exact path='/dashboard/policies/add'/>
+        <Route component={PoliciesList} exact path='/dashboard/policies/list'/>
+        <Route component={Ratio} path='/dashboard/ratios'/>
       </div>
     );
   }
@@ -18,7 +31,6 @@ class Dashboard extends React.Component {
 
 const mapStateToProps = state => ({
   policies: state.policies ? state.policies : [],
-  loggedIn: state.auth.currentUser !== null
 });
 
-export default connect(mapStateToProps)(Dashboard);
+export default RequiresLogin()(connect(mapStateToProps)(Dashboard));

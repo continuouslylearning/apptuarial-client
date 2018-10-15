@@ -33,3 +33,13 @@ export const addPolicy = policy => (dispatch, getState) => {
       return err;
     });
 };
+
+export const DELETE_POLICY = policyId => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  fetch(`${API_BASE_URL}/api/policy/${policyId}`, {
+    method: 'DELETE',
+    headers: { Authorization: `Bearer ${authToken}` }
+  })
+    .then(res => res.json())
+    .catch(err => err);
+};

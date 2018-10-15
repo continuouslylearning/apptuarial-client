@@ -8,10 +8,11 @@ class Policy extends React.Component{
     const options = { year: 'numeric', day: 'numeric', month: 'long' };
     
     const policies = this.props.policies
-      .sort((a,b) => a.effectiveDate - b.effectiveDate)
-      .map(({ id, effectiveDate, expirationDate, exposures, premium }) =>
+      .sort((a,b) => b.accidentDate - a.accidentDate)
+      .map(({ id, status }) =>
         <li key={id} className='policy'>
-          <h2>Policy Id: {id}</h2>
+          <h2>Claim id: {id}</h2>
+          <p>Status: </p>
           <p>Effective Date: {effectiveDate.toLocaleDateString('en-US', options)}</p>
           <p>Expiration Date: {expirationDate.toLocaleDateString('en-US', options)}</p>
           <p>Exposures: {exposures}</p>
