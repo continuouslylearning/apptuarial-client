@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Chart from './ratio-chart';
 import './ratios.css';
 
-
 class Ratios extends React.Component {
 
   render(){

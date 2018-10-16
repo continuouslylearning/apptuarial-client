@@ -25,6 +25,20 @@ export const addClaim = claim => (dispatch, getState) => {
     });
 };
 
+export const DELETE_CLAIM = 'DELETE_CLAIM';
+export const deleteClaim = id => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+
+  return fetch(`${API_BASE_URL}/api/claims/${id}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+    .then(res => res.json())
+    .catch(err => err);
+};
+
 export const FETCH_CLAIMS_SUCCESS = 'FETCH_CLAIMS_SUCCESS';
 const fetchClaimsSuccess = claims => ({
   type: FETCH_CLAIMS_SUCCESS,

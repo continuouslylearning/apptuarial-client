@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PolicyItem from './policy-item';
+import Policy from './policy';
 import List from './list';
 import { Link } from 'react-router-dom';
 import { setFilter, setDirection, toggleCheckbox} from '../actions/filter';
@@ -24,7 +25,7 @@ class PoliciesPage extends React.Component{
   }
 
   render(){
-    const { filter, checked, ascending, factor } = this.props;
+    const { filter, checked, ascending, factor, displayedPolicy } = this.props;
 
     let list = checked 
       ? this.props.policies.filter(policy => policy.expirationDate >= new Date()) 
@@ -59,15 +60,17 @@ class PoliciesPage extends React.Component{
         <label htmlFor='checkbox'>Show only non-expired policies</label>
         <input type='checkbox' id='checkbox' checked={checked} onChange={e=> this.toggleChecked(e)}/>
         <PolicyList data={list}/>
+        {displayedPolicy ? <Policy displayItem={displayedPolicy}/> : null}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  const { checked, ascending, filter } = state.policyFilter;
+  const { checked, ascending, filter, displayedPolicy } = state.policyFilter;
   return {
     policies: state.policies ? state.policies : [],
+    displayedPolicy,
     checked,
     filter,
     ascending,

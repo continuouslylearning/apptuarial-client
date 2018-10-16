@@ -15,3 +15,9 @@ export const setClaimsSortDirection = isAscending => ({
   type: SET_CLAIMS_SORT_DIRECTION,
   isAscending
 });
+
+export const DISPLAY_CLAIM = 'DISPLAY_CLAIM';
+export const displayClaim = displayId => ({
+  type: DISPLAY_CLAIM,
+  displayId
+});

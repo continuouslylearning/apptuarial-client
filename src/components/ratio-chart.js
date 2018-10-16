@@ -17,7 +17,7 @@ export default function Chart(props){
   return (
     <div className='chart'>
       <h3>{label}</h3>
-      <Bar data={data} width={400} height={250}/>
+      <Bar data={data} width={350} height={230}/>
     </div>
   );
 }

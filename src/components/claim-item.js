@@ -1,12 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { displayClaim } from '../actions/claims-list';
 
-export default function ClaimItem(props){
+function ClaimItem(props){
 
   const { id, policyId, status, accidentDate, caseReserve, paidLoss } = props.item;
   const options = props.options;
 
   return (
-    <div>
+    <div onClick={() => props.dispatch(displayClaim(id))}>
       <h3>Claim Id: {id}</h3>
       <p>Policy Id: {policyId}</p>
       <p>Status: {status}</p>
@@ -16,3 +18,5 @@ export default function ClaimItem(props){
     </div>
   );
 }
+
+export default connect()(ClaimItem);

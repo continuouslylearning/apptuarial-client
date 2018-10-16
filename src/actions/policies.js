@@ -34,9 +34,11 @@ export const addPolicy = policy => (dispatch, getState) => {
     });
 };
 
-export const DELETE_POLICY = policyId => (dispatch, getState) => {
+export const DELETE_POLICY = 'DELETE_POLICY';
+
+export const deletePolicy = policyId => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  fetch(`${API_BASE_URL}/api/policy/${policyId}`, {
+  return fetch(`${API_BASE_URL}/api/policies/${policyId}`, {
     method: 'DELETE',
     headers: { Authorization: `Bearer ${authToken}` }
   })

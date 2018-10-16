@@ -6,7 +6,7 @@ ul.menu {
   flex-wrap: wrap;
   font-family: "Computer Modern Sans", sans-serif;
   justify-content: center;
-  align-content: center;
+  align-content: start;
 }
 
 
