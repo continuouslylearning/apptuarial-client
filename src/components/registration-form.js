@@ -4,9 +4,11 @@ import { registerUser } from '../actions/users';
 import { login } from '../actions/auth';
 import Input from './input';
 import { Link } from 'react-router-dom';
+import { required, trimmed, match } from '../validators';
 import './form.css';
+const matchPassword = match('password');
 
-class registrationForm extends React.Component{
+class RegistrationForm extends React.Component{
 
   registerUser(values){
     const { username, password } = values;
@@ -17,22 +19,22 @@ class registrationForm extends React.Component{
 
   render(){
     return (
-      <form onSubmit={this.props.handleSubmit(values => this.registerUser(values))}>
-        <div class='form'>
-          <label htmlFor='username'>Username</label>
-          <Field component={Input} type='text' name='username' id='username'/>
-          <label htmlFor='password'>Password</label>
-          <Field component={Input} type='password' name='password' id='password'/>
-          <label htmlFor='passwordConfirm'>Confirm password</label>
-          <Field component={Input} type='password' name='passwordConfirm' id='passwordConfirm'/>
-          <button type='submit' disabled={this.props.pristine||this.props.submitting}>REGISTER</button>
-          <Link to='/login'>Login</Link>
-        </div>
-      </form>
+      <div>
+        <h2>REGISTER</h2>
+        <form onSubmit={this.props.handleSubmit(values => this.registerUser(values))}>
+          <div class='form'>
+            <Field component={Input} type='text' label='Username' name='username' id='username' validate={[required, trimmed]}/>
+            <Field component={Input} type='password' label='Password' name='password' id='password' validate={[required, trimmed]}/>          
+            <Field component={Input} type='password' label='Confirm password' name='passwordConfirm' id='passwordConfirm' validate={[required, matchPassword]}/>
+            <button type='submit' disabled={this.props.pristine||this.props.submitting}>SUBMIT</button>
+            <Link to='/login'>Login</Link>
+          </div>
+        </form>
+      </div>
     );
   }
 }
 
 export default reduxForm({
   form: 'registration'
-})(registrationForm);
+})(RegistrationForm);

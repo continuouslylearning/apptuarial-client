@@ -17,19 +17,21 @@ class PolicyForm extends React.Component{
   }
 
   render(){
+
+    const { handleSubmit, pristine, submitting, error } = this.props;
+    const errorMessage = !pristine && error ? <span className='error'>{error}</span> : null;
+
     return(
       <div>
         <Link to='/dashboard/policies'>{'< BACK'}</Link>
-        <form onSubmit={this.props.handleSubmit(values => this.addPolicy(values))}>
-          <label htmlFor='effectiveDate'>Effective Date</label>
-          <Field component={Input} type='date' name='effectiveDate' id='effectiveDate' validate={required}/>
-          <label htmlFor='expirationDate'>Expiration Date</label>
-          <Field component={Input} type='date' name='expirationDate' id='expirationDate' validate={[required, moreThanEffectiveDate]}/>
-          <label htmlFor='premium'>Premium</label>
-          <Field component='input' type='number' name='premium' min='0' required={true}/>
-          <label htmlFor='exposures'>Exposures</label>
-          <Field component='input' type='number' name='exposures' min='0'/>
-          <button type='submit' disabled={this.props.pristine || this.props.submitting}>ADD POLICY</button>
+        <h2>ADD A NEW POLICY</h2>
+        <form onSubmit={handleSubmit(values => this.addPolicy(values))}>
+          {errorMessage}
+          <Field component={Input} type='date' label='Effective Date' name='effectiveDate' validate={[required]}/>
+          <Field component={Input} type='date' label='Expiration Date' name='expirationDate' validate={[required, moreThanEffectiveDate]}/>
+          <Field component={Input} type='number' label='Premium' name='premium' min='0' required={true}/>
+          <Field component={Input} type='number' label='Exposures' name='exposures' min='0'/>
+          <button type='submit' disabled={pristine || submitting}>SUBMIT</button>
         </form>
       </div>
     );

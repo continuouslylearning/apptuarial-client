@@ -1,14 +1,15 @@
 import React from 'react';
 
 export default function Input(props){
-  const Element = props.element || 'input';
-  
-  const error = !props.meta.pristine && props.meta.error ? <span class='error'>{props.meta.error}</span> : null;
-
+  const { element, label, name, type, children, input, min } = props;
+  const { touched, error } = props.meta;
+  const Element = element || 'input';
+  const errorMessage = (touched && error) ? <span className='error'>{error}</span> : null;
   return (
-    <div class='input'>
-      {error}
-      <Element {...props.input} id={props.id} type={props.type}/>
+    <div className='input'>
+      <label htmlFor={name}>{label}</label>
+      {errorMessage}
+      <Element className='field' {...input} id={name} min={min} type={type}>{children}</Element>
     </div>
   );
 }

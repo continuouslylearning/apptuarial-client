@@ -4,8 +4,11 @@ export default () => Component => {
 
   function List(props){
     const options = { year: 'numeric', day: 'numeric', month: 'long' };
-    const data = props.data;
-    const list = data.map(item => <Component item={item} options={options}/>);
+    const list = props.data.map(item => 
+      <li key={item.id} className='item'>
+        <Component item={item} options={options}/>
+      </li>
+    );
 
     return(
       <ul>
@@ -13,6 +16,6 @@ export default () => Component => {
       </ul>
     );
   }
-
+  
   return List;
 };

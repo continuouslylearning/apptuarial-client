@@ -11,14 +11,41 @@ form input {
 
 form button {
   font-size: 1em;
-  background-color: red;
+  background-color: rgb(224, 71, 71);
   color: white;
   border: 0px;
-  width: 10em;
-  height: 2.5em;
+  width: 100%;
+  margin-top: .2em;
+  height: 3em;
 }
+
 
 .error {
   color: red;
   font-size: .8em;
+  display: block;
+}
+
+.input label {
+  display: block;
+}
+
+.input .field {
+  margin-top: .2em;
+  margin-bottom: 1.5em;
+  width: 20em;
+  text-align: center;
+  height: 3em;
+}
+
+
+h2 {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: .5em;
+}
+
+.checkbox {
+  text-align: left;
+  background-color: white;
 }

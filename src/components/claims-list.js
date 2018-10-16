@@ -6,12 +6,14 @@ import List from './list';
 class ClaimsPage extends React.Component{
 
   render(){
-
     const claims = this.props.claims.sort((a,b) => b.accidentDate - a.accidentDate);
-
     const ClaimsList = List()(ClaimItem);
+
     return (
-      <ClaimsList data={claims}/>
+      <div>
+        <h2>CLAIMS</h2>
+        <ClaimsList data={claims}/>
+      </div>
     );
   }
 }

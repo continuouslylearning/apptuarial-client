@@ -71,13 +71,13 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps)(Ratios);
 
-//calculates calendar year earned exposure and earned premium for a given year
-function policyReducer(acc, policy, startOfYear, endOfYear){
+// calculates calendar year earned exposure and earned premium on a policy for a given year
+function policyReducer(acc, policy, start, end){
   const { effectiveDate, expirationDate, premium, exposures } = policy;
 
-  if(effectiveDate > endOfYear || expirationDate < startOfYear) return acc;
+  if(effectiveDate > end || expirationDate < start) return acc;
   const length = expirationDate - effectiveDate;
-  const earnedLength = (Math.min(expirationDate, endOfYear) - Math.max(effectiveDate, startOfYear));
+  const earnedLength = (Math.min(expirationDate, end) - Math.max(effectiveDate, start));
   const earnedPremium = acc.earnedPremium + premium * earnedLength / length;
   const earnedExposures = acc.earnedExposures + exposures * earnedLength / length;
 
@@ -89,10 +89,10 @@ function policyReducer(acc, policy, startOfYear, endOfYear){
 
 // calculates the reported loss and reported claims for the given year
 // uses accident year aggregation for claims and losses
-function claimsReducer(acc, claim, startOfYear, endOfYear){
+function claimsReducer(acc, claim, start, end){
   const { accidentDate, caseReserve, transactions } = claim;
 
-  if(accidentDate < startOfYear || accidentDate > endOfYear) return acc;
+  if(accidentDate < start || accidentDate > end) return acc;
   const paidLoss = transactions.reduce((acc,{lossPayment}) => acc + lossPayment, 0);
   const reportedLoss = acc.reportedLoss + paidLoss + caseReserve;
   const reportedClaims = acc.reportedClaims + 1;
