@@ -4,6 +4,7 @@ import authReducer from './auth';
 import { FETCH_POLICIES_SUCCESS } from '../actions/policies';
 import { FETCH_CLAIMS_SUCCESS } from '../actions/claims';
 import policyFilterReducer from './filter';
+import claimsListReducer from './claims';
 
 function policiesReducer(state = [], action){
   if(action.type === FETCH_POLICIES_SUCCESS){
@@ -35,6 +36,7 @@ export default combineReducers({
   form: formReducer,
   policies: policiesReducer,
   claims: claimsReducer,
-  policyFilter: policyFilterReducer
+  policyFilter: policyFilterReducer,
+  claimsList: claimsListReducer
 });
 

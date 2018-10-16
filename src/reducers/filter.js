@@ -23,8 +23,7 @@ function checkedReducer(state, action){
 }
 
 function directionReducer(state, action){
-  if(action.type === SET_DIRECTION){
-    console.log(action.ascending);
+  if(action.type === SET_DIRECTION) {
     return action.ascending;
   } else {
     return state;

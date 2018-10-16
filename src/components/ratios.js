@@ -40,7 +40,6 @@ class Ratios extends React.Component {
       });
     }
 
-    console.log(stats);
     const labels = stats.map(({ year }) => year);
     const data = stats.map(({ earnedExposures, earnedPremium }) => earnedExposures ? (earnedPremium / earnedExposures).toFixed(2) : 0);
     const severityData = stats.map(({ reportedLoss, reportedClaims }) => reportedClaims ? (reportedLoss / reportedClaims).toFixed(2) : 0);
