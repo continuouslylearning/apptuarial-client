@@ -11,11 +11,14 @@ export default () => Component => {
     return <Component {...passThroughProps}/>;
   }
 
-  const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null,
-    error: state.auth.error,
-    loading: state.auth.loading
-  });
+  const mapStateToProps = state => {
+    const { currentUser, error, loading } = state.auth;
+    return {
+      loggedIn: currentUser !== null,
+      error,
+      loading
+    };
+  };
 
   return connect(mapStateToProps)(RequiresLogin);
 };
