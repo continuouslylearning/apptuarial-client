@@ -19,11 +19,11 @@ class PolicyForm extends React.Component{
   render(){
 
     const { handleSubmit, pristine, submitting, error } = this.props;
-    const errorMessage = !pristine && error ? <span className='error'>{error}</span> : null;
+    const errorMessage = !pristine && error ? <span className='form-error'>{error}</span> : null;
 
     return(
       <div>
-        <Link to='/dashboard/policies'>{'< BACK'}</Link>
+        <Link to='/dashboard/policies'>{'BACK'}</Link>
         <h2>ADD A NEW POLICY</h2>
         <form onSubmit={handleSubmit(values => this.addPolicy(values))}>
           {errorMessage}

@@ -1,5 +1,6 @@
 import { API_BASE_URL } from '../config';
-
+import { SubmissionError } from 'redux-form';
+import { normalizeResponseError } from '../utils/utils';
 export const FETCH_POLICIES_SUCCESS = 'FETCH_POLICIES_SUCCESS';
 export const fetchPoliciesSuccess = policies => ({
   type: FETCH_POLICIES_SUCCESS,
@@ -28,10 +29,8 @@ export const addPolicy = policy => (dispatch, getState) => {
     },
     body: JSON.stringify(policy)
   })
-    .then(res => res.json())
-    .catch(err => {
-      return err;
-    });
+    .then(res => normalizeResponseError(res))
+    .catch(err => Promise.reject(new SubmissionError({ _error: err.message })));
 };
 
 export const DELETE_POLICY = 'DELETE_POLICY';

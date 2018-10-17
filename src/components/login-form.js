@@ -14,7 +14,7 @@ class LoginForm extends React.Component{
 
   render(){
     const { pristine, error, submitting, handleSubmit } = this.props;
-    const errorMessage = !pristine && error ? <span className='error'>{error}</span> : null;
+    const errorMessage = !pristine && error ? <span className='form-error'>{error}</span> : null;
 
     return(
       <div>

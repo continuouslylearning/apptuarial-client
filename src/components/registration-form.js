@@ -16,16 +16,13 @@ class RegistrationForm extends React.Component{
     const user = { username, password };
     return this.props.dispatch(registerUser(user))
       .then(() => this.props.dispatch(login(username, password)))
-      .catch(err => {
-        console.log(err);
-        return Promise.reject(new SubmissionError({ _error: err.message }));
-      });
+      .catch(err => Promise.reject(new SubmissionError({ _error: err.message })));
   }
 
   render(){
     const { handleSubmit, pristine, submitting, loggedIn, error } = this.props;
     if(loggedIn) return <Redirect to='/dashboard'/>;
-    const errorMessage = error ? <span className='error'>{error}</span> : null;
+    const errorMessage = error ? <span className='form-error'>{error}</span> : null;
 
     return (
       <div>

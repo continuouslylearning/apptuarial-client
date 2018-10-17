@@ -1,5 +1,4 @@
 import { API_BASE_URL } from '../config';
-import { SubmissionError } from 'redux-form';
 import { normalizeResponseError } from '../utils/utils';
 export const REGISTER_USER = 'REGISTER_USER';
 
