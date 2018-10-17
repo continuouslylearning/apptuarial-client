@@ -25,11 +25,11 @@ class PoliciesPage extends React.Component{
   }
 
   render(){
-    const { filter, checked, ascending, factor, displayedPolicy } = this.props;
+    const { filter, checked, ascending, factor, displayedPolicy, policies } = this.props;
 
     let list = checked 
-      ? this.props.policies.filter(policy => policy.expirationDate >= new Date()) 
-      : this.props.policies.slice();
+      ? policies.filter(policy => policy.expirationDate >= new Date()) 
+      : policies.slice();
 
     if(filter === 'effective') {
       list.sort((a, b) => (b.effectiveDate - a.effectiveDate) * factor);

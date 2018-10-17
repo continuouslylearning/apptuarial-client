@@ -1,5 +1,7 @@
 import { API_BASE_URL } from '../config';
 import jwtDecode from 'jwt-decode';
+import { SubmissionError } from 'redux-form';
+import { normalizeResponseError} from '../utils/utils';
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = authToken => ({
@@ -36,12 +38,16 @@ export const login = (username, password) => dispatch => {
     headers: { 'Content-Type': 'application/json'},
     body: JSON.stringify({ username, password })
   })
-    .then(res => res.json())
+    .then(res => normalizeResponseError(res))
     .then(({authToken}) => {
       const currentUser = jwtDecode(authToken).user;
       dispatch(setAuthToken(authToken));
       dispatch(authRequestSuccess(currentUser));
       localStorage.setItem('authToken', authToken);
     })
-    .catch(err => dispatch(authRequest(err)));
+    .catch(err => {
+      // return a promise that resolves to a submission error
+      dispatch(authRequestError(err));
+      return Promise.reject(new SubmissionError({ _error: err.message }));
+    });
 };

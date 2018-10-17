@@ -22,8 +22,9 @@ form button {
 
 .error {
   color: red;
-  font-size: .8em;
+  font-size: .9em;
   display: block;
+  text-align: center;
 }
 
 .input label {

@@ -1,5 +1,6 @@
 import { API_BASE_URL } from '../config';
-
+import { SubmissionError } from 'redux-form';
+import { normalizeResponseError } from '../utils/utils';
 export const REGISTER_USER = 'REGISTER_USER';
 
 export const registerUser = user => dispatch => {
@@ -9,5 +10,5 @@ export const registerUser = user => dispatch => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(user)
   })
-    .then(res => res.json());
+    .then(res => normalizeResponseError(res));
 };
