@@ -1,7 +1,7 @@
 import React from 'react';
 import LandingPage from './landing-page';
 import RegistrationForm from './registration-form';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import Dashboard from './dashboard';
 import { connect } from 'react-redux';
 import Header from './header';
@@ -15,10 +15,12 @@ class App extends React.Component{
         <Header/>
         <Router>
           <main>
-            <Redirect from='/' to='/login'/>
-            <Route component={LandingPage} exact path='/login'/>
-            <Route component={RegistrationForm} exact path='/register'/>
-            <Route component={Dashboard} path='/dashboard'/>
+            <Switch>
+              <Route component={LandingPage} exact path='/login'/>
+              <Route component={RegistrationForm} exact path='/register'/>
+              <Route component={Dashboard} path='/dashboard'/>
+              <Redirect from='/' to='/login'/>
+            </Switch>
           </main>
         </Router>
       </div>

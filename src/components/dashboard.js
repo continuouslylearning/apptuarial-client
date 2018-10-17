@@ -24,13 +24,13 @@ class Dashboard extends React.Component {
   render(){
     return (
       <div>
-        <Route component={Menu} exact path='/dashboard'/>
         <Route component={PolicyForm} exact path='/dashboard/policies/add'/>
         <Route component={PoliciesList} path='/dashboard/policies/list'/>
         <Route component={ClaimsList} path='/dashboard/claims/list'/>
         <Route component={Ratio} path='/dashboard/ratios'/>
         <Route component={AddClaimForm} exact path='/dashboard/claims/add'/>
         <Route component={UpdateClaimForm} exact path='/dashboard/claims/update'/>
+        <Route component={Menu} exact path='/dashboard'/>
       </div>
     );
   }

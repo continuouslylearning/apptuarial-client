@@ -79,3 +79,15 @@ button.add {
   }
 }
 
+
+@media (max-width: 640px){
+  .list { 
+    text-align: center;
+  }
+
+  .list label {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

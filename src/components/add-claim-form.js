@@ -30,7 +30,7 @@ class AddClaimForm extends React.Component{
             <option value=''></option>
             {options}
           </Field>
-          <Field component={Input} type='number' label='Case Reserve' name='caseReserve' id='caseReserve' min='0' validate={[required]}/>
+          <Field component={Input} type='number' label='Case Reserve' name='caseReserve' min='0' validate={[required]}/>
           <button type='submit' disabled={pristine || submitting}>SUBMIT</button>
         </form>
       </div>

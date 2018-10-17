@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchClaims, deleteClaim } from '../actions/claims';
-
-import './popup.css';
 import { displayClaim } from '../actions/claims-list';
+import './popup.css';
 
 class Policy extends React.Component{
 
@@ -18,17 +17,15 @@ class Policy extends React.Component{
     const { id, accidentDate, paidLoss, caseReserve, transactions } = this.props;
     const options = { year: 'numeric', day: 'numeric', month: 'long' };
     const transactionsList = transactions.length !== 0 ? 
-      <div>
-        <ul>
-          {transactions.map((item, index) => 
-            <li key={index}>
-              <b>{'Transaction'}</b>
-              <p>Date: {item.transactionDate.toLocaleDateString('en-US', options)}</p>
-              <p>Loss Payment: {item.lossPayment}</p>
-              <p>Case Reserve: {item.caseReserve}</p>
-            </li>)}
-        </ul> 
-      </div>
+      <ul>
+        {transactions.map((item, index) => 
+          <li key={index}>
+            <b>{'Transaction'}</b>
+            <p>Date: {item.transactionDate.toLocaleDateString('en-US', options)}</p>
+            <p>Loss Payment: {item.lossPayment}</p>
+            <p>Case Reserve: {item.caseReserve}</p>
+          </li>)}
+      </ul> 
       : null;
 
     return (

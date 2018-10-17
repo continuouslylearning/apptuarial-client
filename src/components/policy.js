@@ -19,17 +19,16 @@ class Policy extends React.Component{
     const { id, effectiveDate, expirationDate, exposures, premium, claims } = this.props;
     const options = { year: 'numeric', day: 'numeric', month: 'long' };
     const claimsList = claims.length !== 0 ? 
-      <div>
-        <ul>
-          {claims.map(item => 
-            <li key={item.id}>
-              <b>{`Claim # ${item.id}`}</b>
-              <p>Accident Date: {item.accidentDate.toLocaleDateString('en-US', options)}</p>
-              <p>Paid Loss: {item.paidLoss}</p>
-              <p>Case Reserve: {item.caseReserve}</p>
-            </li>)}
-        </ul> 
-      </div>
+      <ul>
+        {claims.map(({id, accidentDate, paidLoss, status, caseReserve}) => 
+          <li key={id}>
+            <b>{`Claim # ${id}`}</b>
+            <p>Accident Date: {accidentDate.toLocaleDateString('en-US', options)}</p>
+            <p>Status: {status} </p>
+            <p>Paid Loss: {paidLoss}</p>
+            <p>Case Reserve: {caseReserve}</p>
+          </li>)}
+      </ul> 
       : null;
 
     return (
@@ -51,7 +50,7 @@ class Policy extends React.Component{
 const mapStateToProps = (state, props) => {
   const id = props.displayItem;
   const policy = state.policies.find(item => item.id === id);
-  const claims = state.claims.filter(claim => claim.policyId === id);
+  const claims = state.claims.filter(({ policyId }) => policyId === id);
   const { effectiveDate, expirationDate, exposures, premium } = policy;
 
   return {
