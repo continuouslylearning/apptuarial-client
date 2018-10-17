@@ -10,44 +10,38 @@ const initialState = {
 export default function(state = initialState, action){
   switch(action.type){
 
-  case AUTH_REQUEST: {
+  case AUTH_REQUEST:
     return {
       ...state,
       loading: true,
       error: false
     };
-  }
-  case SET_AUTH_TOKEN: {
+  case SET_AUTH_TOKEN:
     return {
       ...state,
       loading: false,
       authToken: action.authToken
     };
-  }
-  case AUTH_REQUEST_SUCCESS: {
+  case AUTH_REQUEST_SUCCESS:
     return {
       ...state,
       loading: false,
       currentUser: action.currentUser
     };
-  }
-  case AUTH_REQUEST_ERROR:{
+  case AUTH_REQUEST_ERROR:
     return {
       ...state,
       loading: false,
       error: action.error
     };
-  }
-  case CLEAR_AUTH: {
+  case CLEAR_AUTH:
     return {
       ...state,
       currentUser: null,
       authToken: null
     };
-  }
-  default: {
+  default: 
     return state;
   }
-
-  }
+  
 }

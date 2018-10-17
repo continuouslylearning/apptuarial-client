@@ -17,7 +17,7 @@ class Policy extends React.Component{
     const { claims, closeItem } = this.props;
     const { id, effectiveDate, expirationDate, exposures, premium } = this.props.policy;
     const options = { year: 'numeric', day: 'numeric', month: 'long' };
-    
+
     const claimsList = claims.length !== 0 ? 
       <ul>
         {claims.map(({id, accidentDate, paidLoss, status, caseReserve}) => 
@@ -27,7 +27,8 @@ class Policy extends React.Component{
             <p>Status: {status} </p>
             <p>Paid Loss: {paidLoss}</p>
             <p>Case Reserve: {caseReserve}</p>
-          </li>)}
+          </li>
+        )}
       </ul> 
       : null;
 

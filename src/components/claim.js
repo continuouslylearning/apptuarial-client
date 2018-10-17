@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchClaims, deleteClaim } from '../actions/claims';
 import './popup.css';
 
-class Policy extends React.Component{
+class Claim extends React.Component{
 
   delete(id){
     return this.props.dispatch(deleteClaim(id))
@@ -16,6 +16,7 @@ class Policy extends React.Component{
     const { transactions, closeItem } = this.props;
     const { id, policyId, accidentDate, paidLoss, caseReserve } = this.props.claim;
     const options = { year: 'numeric', day: 'numeric', month: 'long' };
+
     const transactionsList = transactions.length !== 0 ? 
       <ul>
         {transactions.map((item, index) => 
@@ -54,4 +55,4 @@ const mapStateToProps = (state, props) => {
     transactions: transactions.slice().sort((a, b) => b.transactionDate - a.transactionDate)
   };
 };
-export default connect(mapStateToProps)(Policy);
+export default connect(mapStateToProps)(Claim);
