@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { displayPolicy} from '../actions/filter';
+
 
 function PolicyItem(props){
   const { id, effectiveDate, expirationDate, exposures, premium } = props.item;
   const options = props.options;
 
   return (
-    <div onClick={() => props.dispatch(displayPolicy(id))}>
+    <div>
       <h3>Policy Id: {id}</h3>
       <p>Effective Date: {effectiveDate.toLocaleDateString('en-US', options)}</p>
       <p>Expiration Date: {expirationDate.toLocaleDateString('en-US', options)}</p>

@@ -9,6 +9,13 @@ import './list.css';
 
 class PoliciesPage extends React.Component{
 
+  constructor(props){
+    super(props);
+    this.state = {
+      id: null
+    };
+  }
+
   sort(e){
     const filter = e.target.value;
     this.props.dispatch(setFilter(filter));
@@ -24,8 +31,16 @@ class PoliciesPage extends React.Component{
     this.props.dispatch(toggleCheckbox(checked));
   }
 
+  displayItem(itemId){
+    this.setState({
+      itemId
+    });
+  }
+
   render(){
-    const { filter, checked, ascending, factor, displayedPolicy, policies } = this.props;
+    const { filter, checked, ascending, factor, policies } = this.props;
+
+    const itemId = this.state.itemId;
 
     let list = checked 
       ? policies.filter(policy => policy.expirationDate >= new Date()) 
@@ -59,8 +74,8 @@ class PoliciesPage extends React.Component{
         </div>
         <label htmlFor='checkbox'>Show only non-expired policies</label>
         <input type='checkbox' id='checkbox' checked={checked} onChange={e=> this.toggleChecked(e)}/>
-        <PolicyList data={list}/>
-        {displayedPolicy ? <Policy displayItem={displayedPolicy}/> : null}
+        <PolicyList data={list} displayItem={(itemId) => this.displayItem(itemId)}/>
+        {itemId ? <Policy item={itemId} closeItem={() => this.displayItem(null)}/> : null}
       </div>
     );
   }

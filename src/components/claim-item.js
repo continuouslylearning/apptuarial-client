@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { displayClaim } from '../actions/claims-list';
 
 function ClaimItem(props){
 
@@ -8,7 +7,7 @@ function ClaimItem(props){
   const options = props.options;
 
   return (
-    <div onClick={() => props.dispatch(displayClaim(id))}>
+    <div>
       <h3>Claim Id: {id}</h3>
       <p>Policy Id: {policyId}</p>
       <p>Status: {status}</p>

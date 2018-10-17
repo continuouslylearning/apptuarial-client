@@ -6,7 +6,20 @@ import Claim from './claim';
 import { setClaimsSortField, setClaimsSortDirection, toggleStatusFilter } from '../actions/claims-list';
 
 class ClaimsPage extends React.Component{
+
+  constructor(props){
+    super(props);
+    this.state = {
+      itemId: null
+    };
+  }
   
+  displayItem(itemId){
+    this.setState({
+      itemId
+    });
+  }
+
   sort(e){
     const sortingField = e.target.value;
     this.props.dispatch(setClaimsSortField(sortingField));
@@ -23,7 +36,8 @@ class ClaimsPage extends React.Component{
   }
 
   render(){
-    const { sortingField, hideClosed, isAscending, factor, displayId, claims } = this.props;
+    const { sortingField, hideClosed, isAscending, factor, claims } = this.props;
+    const itemId = this.state.itemId;
 
     let list = hideClosed
       ? claims.filter(claim => claim.status === 'OPEN')
@@ -56,22 +70,21 @@ class ClaimsPage extends React.Component{
         </div>
         <label htmlFor='checkbox'>Show only open claims</label>
         <input type='checkbox' id='checkbox' checked={hideClosed} onChange={e=> this.toggleChecked(e)}/>
-        <ClaimsList data={list}/>
-        {displayId ? <Claim displayedItem={displayId}/> : null}
+        <ClaimsList data={list} displayItem={(itemId) => this.displayItem(itemId)}/>
+        {itemId ? <Claim item={itemId} closeItem={() => this.displayItem(null)}/> : null}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  const { isAscending, hideClosed, sortingField, displayId } = state.claimsList;
+  const { isAscending, hideClosed, sortingField} = state.claimsList;
   return {
     claims: state.claims,
     isAscending: isAscending === 'true',
     hideClosed,
     sortingField,
-    factor: isAscending === 'true' ? -1 : 1,
-    displayId
+    factor: isAscending === 'true' ? -1 : 1
   };
 };
 

@@ -1,23 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { displayPolicy } from '../actions/filter';
 import { fetchPolicies, deletePolicy } from '../actions/policies';
 import { fetchClaims } from '../actions/claims';
-
 import './popup.css';
 
 class Policy extends React.Component{
 
   delete(id){
     return this.props.dispatch(deletePolicy(id))
-      .then(() => this.props.dispatch(displayPolicy(null)))
+      .then(() => this.props.closeItem())
       .then(() => Promise.all([this.props.dispatch(fetchPolicies()), this.props.dispatch(fetchClaims())]))
       .catch(err => err);
   }
 
   render(){
-    const { id, effectiveDate, expirationDate, exposures, premium, claims } = this.props;
+    const { claims, closeItem } = this.props;
+    const { id, effectiveDate, expirationDate, exposures, premium } = this.props.policy;
     const options = { year: 'numeric', day: 'numeric', month: 'long' };
+    
     const claimsList = claims.length !== 0 ? 
       <ul>
         {claims.map(({id, accidentDate, paidLoss, status, caseReserve}) => 
@@ -40,7 +40,7 @@ class Policy extends React.Component{
         <p>Premium: {premium}</p>
         <p>Number of Claims: {claims.length === 0? 'None': `${claims.length}`}</p>
         {claimsList}
-        <button className='close' onClick={() => this.props.dispatch(displayPolicy(null))}>CLOSE</button>
+        <button className='close' onClick={closeItem}>CLOSE</button>
         <button className='delete' onClick={() => this.delete(id)}>DELETE</button>
       </div>
     );
@@ -48,17 +48,12 @@ class Policy extends React.Component{
 }
 
 const mapStateToProps = (state, props) => {
-  const id = props.displayItem;
+  const id = props.item;
   const policy = state.policies.find(item => item.id === id);
   const claims = state.claims.filter(({ policyId }) => policyId === id);
-  const { effectiveDate, expirationDate, exposures, premium } = policy;
-
+ 
   return {
-    id,
-    effectiveDate,
-    expirationDate,
-    exposures,
-    premium,
+    policy,
     claims
   };
 };

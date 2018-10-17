@@ -1,10 +1,9 @@
-import { SET_CLAIMS_SORT_DIRECTION, SET_CLAIMS_SORT_FIELD, TOGGLE_STATUS_FILTER, DISPLAY_CLAIM } from '../actions/claims-list';
+import { SET_CLAIMS_SORT_DIRECTION, SET_CLAIMS_SORT_FIELD, TOGGLE_STATUS_FILTER } from '../actions/claims-list';
 
 const initialState = {
   isAscending: false,
   sortingField: 'accidentDate',
-  hideClosed: false,
-  displayId: null
+  hideClosed: false
 };
 
 export default function rootReducer(state = initialState, action){
@@ -22,12 +21,6 @@ export default function rootReducer(state = initialState, action){
     return {
       ...state,
       hideClosed: action.checked
-    };
-  } else if(action.type === DISPLAY_CLAIM){
-    console.log(action.displayId);
-    return {
-      ...state, 
-      displayId: action.displayId
     };
   } else {
     return state;

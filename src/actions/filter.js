@@ -15,9 +15,3 @@ export const setDirection = ascending => ({
   type: SET_DIRECTION,
   ascending
 });
-
-export const DISPLAY_POLICY = 'DISPLAY_POLICY';
-export const displayPolicy = displayedPolicy => ({
-  type: DISPLAY_POLICY,
-  displayedPolicy
-});

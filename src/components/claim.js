@@ -1,20 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchClaims, deleteClaim } from '../actions/claims';
-import { displayClaim } from '../actions/claims-list';
 import './popup.css';
 
 class Policy extends React.Component{
 
   delete(id){
     return this.props.dispatch(deleteClaim(id))
-      .then(() => this.props.dispatch(displayClaim(null)))
+      .then(() => this.props.closeItem())
       .then(() => this.props.dispatch(fetchClaims()))
       .catch(err => err);
   }
 
   render(){
-    const { id, policyId, accidentDate, paidLoss, caseReserve, transactions } = this.props;
+    const { transactions, closeItem } = this.props;
+    const { id, policyId, accidentDate, paidLoss, caseReserve } = this.props.claim;
     const options = { year: 'numeric', day: 'numeric', month: 'long' };
     const transactionsList = transactions.length !== 0 ? 
       <ul>
@@ -37,7 +37,7 @@ class Policy extends React.Component{
         <p>Case Reserve: {caseReserve}</p>
         <p>Number of Transactions: {transactions.length === 0? 'None': `${transactions.length}`}</p>
         {transactionsList}
-        <button className='close' onClick={() => this.props.dispatch(displayClaim(null))}>CLOSE</button>
+        <button className='close' onClick={closeItem}>CLOSE</button>
         <button className='delete' onClick={() => this.delete(id)}>DELETE</button>
       </div>
     );
@@ -45,16 +45,12 @@ class Policy extends React.Component{
 }
 
 const mapStateToProps = (state, props) => {
-  const id = props.displayedItem;
+  const id = props.item;
   const claim = state.claims.find(item => item.id === id);
-  const { policyId, accidentDate, paidLoss, caseReserve, transactions } = claim;
+  const transactions = claim.transactions;
 
   return {
-    id,
-    policyId,
-    accidentDate,
-    paidLoss,
-    caseReserve,
+    claim,
     transactions: transactions.slice().sort((a, b) => b.transactionDate - a.transactionDate)
   };
 };
