@@ -1,12 +1,15 @@
 import React from 'react';
 import Input from './input';
-import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { login } from '../actions/auth';
 import { required } from '../validators';
+import BaseForm from './form';
 
+const BaseLoginForm = BaseForm('login');
 
-class LoginForm extends React.Component{
+class LoginForm extends React.Component {
 
   login(values){
     const { username, password } = values;
@@ -14,24 +17,16 @@ class LoginForm extends React.Component{
   }
 
   render(){
-    const { pristine, error, submitting, handleSubmit } = this.props;
-    const errorMessage = !pristine && error ? <span className='form-error'>{error}</span> : null;
-
     return(
       <div>
-        <h2>LOGIN</h2>
-        <form onSubmit={handleSubmit(values => this.login(values))}>
-          {errorMessage}
+        <BaseLoginForm title='LOGIN' onSubmit={values => this.login(values)}>
           <Field component={Input} label='Username' type='text' name='username' validate={[required]}/>
           <Field component={Input} label='Password' type='password' name='password' validate={[required]} />
-          <button type='submit' disabled={pristine || submitting}>SUBMIT</button><br/>
-          <Link className='form-link' to='/register'>Register</Link>
-        </form>
+        </BaseLoginForm>
+        <Link className='form-link' to='/register'>Register</Link>
       </div>
     );
   }
 }
 
-export default reduxForm({
-  form: 'login'
-})(LoginForm);
+export default connect()(LoginForm);
