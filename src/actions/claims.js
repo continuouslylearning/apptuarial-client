@@ -1,5 +1,6 @@
 import { API_BASE_URL } from '../config';
 import { SubmissionError } from 'redux-form';
+import { normalizeResponseError } from '../utils/utils';
 
 export const ADD_CLAIM = 'ADD_CLAIM';
 export const addClaim = claim => (dispatch, getState) => {
@@ -13,16 +14,8 @@ export const addClaim = claim => (dispatch, getState) => {
     },
     body: JSON.stringify(claim)
   })
-    .then(res => {
-      if(!res.ok){
-        return Promise.reject(new Error('error'));
-      }
-      return res;
-    })
-    .then(res => res.json())
-    .catch(err => {
-      return Promise.reject(new SubmissionError({ _error: 'error'}));
-    });
+    .then(res => normalizeResponseError(res))
+    .catch(err => Promise.reject(new SubmissionError({ _error: err.message })));
 };
 
 export const DELETE_CLAIM = 'DELETE_CLAIM';

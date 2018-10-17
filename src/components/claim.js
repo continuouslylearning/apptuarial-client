@@ -14,7 +14,7 @@ class Policy extends React.Component{
   }
 
   render(){
-    const { id, accidentDate, paidLoss, caseReserve, transactions } = this.props;
+    const { id, policyId, accidentDate, paidLoss, caseReserve, transactions } = this.props;
     const options = { year: 'numeric', day: 'numeric', month: 'long' };
     const transactionsList = transactions.length !== 0 ? 
       <ul>
@@ -31,6 +31,7 @@ class Policy extends React.Component{
     return (
       <div className='popup'>
         <h2>Claim #{id}</h2>
+        <p>Policy Id: {policyId}</p>
         <p>Accident Date: {accidentDate.toLocaleDateString('en-US', options)}</p>
         <p>Paid Loss: {paidLoss}</p>
         <p>Case Reserve: {caseReserve}</p>
@@ -46,10 +47,11 @@ class Policy extends React.Component{
 const mapStateToProps = (state, props) => {
   const id = props.displayedItem;
   const claim = state.claims.find(item => item.id === id);
-  const { accidentDate, paidLoss, caseReserve, transactions } = claim;
+  const { policyId, accidentDate, paidLoss, caseReserve, transactions } = claim;
 
   return {
     id,
+    policyId,
     accidentDate,
     paidLoss,
     caseReserve,

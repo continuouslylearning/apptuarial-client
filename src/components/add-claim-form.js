@@ -19,12 +19,13 @@ class AddClaimForm extends React.Component{
 
     const { policies, handleSubmit, pristine, submitting, error } = this.props;
     const options = policies.map(({ id }) => <option key={id} value={id}>{id}</option>);
+    const errorMessage = error ? <span className='form-error'>{error}</span> : null;
     return(
       <div>
         <Link to='/dashboard/policies'>{'< BACK'}</Link>
         <h2>ADD A NEW CLAIM</h2> 
         <form className='form' onSubmit={handleSubmit(values => this.addClaim(values))}>
-          {error}
+          {errorMessage}
           <Field component={Input} type='date' label='Accident Date' name='accidentDate' validate={[required]}/>
           <Field component={Input} element='select' label='Policy ID' name='policyId' validate={[required]}>
             <option value=''></option>

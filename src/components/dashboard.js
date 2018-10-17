@@ -6,16 +6,14 @@ import PoliciesList from './policy-list';
 import ClaimsList from './claims-list';
 import PolicyForm from './policy-form';
 import AddClaimForm from './add-claim-form';
+import UpdateClaimForm from './update-claim-form';
 import Menu from './menu';
 import Ratio from './ratios';
 import { fetchPolicies } from '../actions/policies';
 import { fetchClaims } from '../actions/claims';
-import UpdateClaimForm from './update-claim-form';
-
 
 class Dashboard extends React.Component {
 
-  
   componentDidMount(){
     this.props.dispatch(fetchPolicies());
     this.props.dispatch(fetchClaims());
