@@ -12,7 +12,7 @@ class PoliciesPage extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      id: null
+      itemId: null
     };
   }
 
@@ -60,20 +60,22 @@ class PoliciesPage extends React.Component{
       <div className='list'>
         <Link to='/dashboard'>BACK</Link>
         <h2>POLICIES</h2>
-        <label htmlFor='sort'>Sort By</label>
-        <div className='dropdown'>
-          <select id='sort' value={filter} onChange={e => this.sort(e)}>
-            <option value='effective'>Effective Date</option>
-            <option value='premium'>Premium</option>
-            <option value='exposure'>Exposure</option>
-          </select>
-          <select id='direction' value={ascending} onChange={e => this.setDirection(e)}>
-            <option value='true'>Ascending</option>
-            <option value='false'>Descending</option>
-          </select>
+        <div className='sort-area'>
+          <label htmlFor='sort'>Sort By</label>
+          <div className='dropdown'>
+            <select id='sort' value={filter} onChange={e => this.sort(e)}>
+              <option value='effective'>Effective Date</option>
+              <option value='premium'>Premium</option>
+              <option value='exposure'>Exposure</option>
+            </select>
+            <select id='direction' value={ascending} onChange={e => this.setDirection(e)}>
+              <option value='true'>Ascending</option>
+              <option value='false'>Descending</option>
+            </select>
+          </div>
+          <label htmlFor='checkbox'>Show only non-expired policies</label>
+          <input type='checkbox' id='checkbox' checked={checked} onChange={e=> this.toggleChecked(e)}/>
         </div>
-        <label htmlFor='checkbox'>Show only non-expired policies</label>
-        <input type='checkbox' id='checkbox' checked={checked} onChange={e=> this.toggleChecked(e)}/>
         <PolicyList data={list} displayItem={(itemId) => this.displayItem(itemId)}/>
         {itemId ? <Policy item={itemId} closeItem={() => this.displayItem(null)}/> : null}
       </div>

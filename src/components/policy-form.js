@@ -9,23 +9,40 @@ const moreThanEffectiveDate = moreThan('effectiveDate');
 
 class PolicyForm extends React.Component{
 
+  constructor(props){
+    super(props);
+
+    this.state = {
+      showSuccess: false
+    };
+  }
+
+  componentDidUpdate(prevProps){
+    if((prevProps.pristine && !this.props.pristine) && this.state.showSuccess) {
+      this.setState({ showSuccess: false });
+    }
+
+  }
   addPolicy(values){
-    const { effectiveDate, expirationDate, premium, exposures } = values;
-    const newPolicy = { effectiveDate, expirationDate, premium, exposures };
-    return this.props.dispatch(addPolicy(newPolicy))
-      .then(() => this.props.dispatch(fetchPolicies()));
+    return this.props.dispatch(addPolicy(values))
+      .then(() => this.props.dispatch(fetchPolicies()))
+      .then(() => {
+        this.setState({ showSuccess: true });
+      });
   }
 
   render(){
 
     const { handleSubmit, pristine, submitting, error } = this.props;
     const errorMessage = !pristine && error ? <span className='form-error'>{error}</span> : null;
+    const successMessage = this.state.showSuccess ? <span className='form-success'>Your submission was successful!</span> : null;
 
     return(
       <div>
         <Link to='/dashboard/policies'>{'BACK'}</Link>
         <h2>ADD A NEW POLICY</h2>
         <form onSubmit={handleSubmit(values => this.addPolicy(values))}>
+          {successMessage}
           {errorMessage}
           <Field component={Input} type='date' label='Effective Date' name='effectiveDate' validate={[required]}/>
           <Field component={Input} type='date' label='Expiration Date' name='expirationDate' validate={[required, moreThanEffectiveDate]}/>

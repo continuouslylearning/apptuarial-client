@@ -19,9 +19,9 @@ export const addClaim = claim => (dispatch, getState) => {
 };
 
 export const DELETE_CLAIM = 'DELETE_CLAIM';
+
 export const deleteClaim = id => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-
   return fetch(`${API_BASE_URL}/api/claims/${id}`, {
     method: 'DELETE',
     headers: {
@@ -45,6 +45,21 @@ export const fetchClaims = () => (dispatch, getState) => {
     method: 'GET',
     headers: { Authorization: `Bearer ${authToken}` }
   })
-    .then(res => res.json())
+    .then(res => normalizeResponseError(res))
     .then(claims => dispatch(fetchClaimsSuccess(claims)));
+};
+
+export const UPDATE_CLAIM = 'UPDATE_CLAIM';
+export const updateClaim = claim => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+
+  return fetch(`${API_BASE_URL}/api/claims/${claim.id}`, {
+    method: 'PUT',
+    headers: { 
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(claim)
+  })
+    .then(res => normalizeResponseError(res));
 };

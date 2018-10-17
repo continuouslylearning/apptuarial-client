@@ -18,7 +18,7 @@ header button {
   display: block;
   border: 0px;
   font-size: 1em;
-  background-color: inherit; 
+  background-color: red; 
   color: white;
   height: 2em;
   width: 10em;

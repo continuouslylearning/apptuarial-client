@@ -34,7 +34,7 @@ class RegistrationForm extends React.Component{
             <Field component={Input} type='password' label='Password' name='password' validate={[required, trimmed]}/>          
             <Field component={Input} type='password' label='Confirm password' name='passwordConfirm' validate={[required, matchPassword]}/>
             <button type='submit' disabled={pristine||submitting}>SUBMIT</button>
-            <Link class='link' to='/login'>Login</Link>
+            <Link class='form-link' to='/login'>Login</Link>
           </div>
         </form>
       </div>

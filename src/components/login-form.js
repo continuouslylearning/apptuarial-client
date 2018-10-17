@@ -24,7 +24,7 @@ class LoginForm extends React.Component{
           <Field component={Input} label='Username' type='text' name='username' validate={[required]}/>
           <Field component={Input} label='Password' type='password' name='password' validate={[required]} />
           <button type='submit' disabled={pristine || submitting}>SUBMIT</button><br/>
-          <Link to='/register'>Register</Link>
+          <Link className='form-link' to='/register'>Register</Link>
         </form>
       </div>
     );

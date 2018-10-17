@@ -7,6 +7,8 @@ form {
 form input {
   display: block;
   margin-bottom: 2em;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 form button {
@@ -19,19 +21,38 @@ form button {
   height: 3em;
 }
 
+.form-link {
+  display: block;
+  text-align: center;
+  margin-top: 1em;
+}
 
-.error {
-  color: red;
+.error, .form-error {
+  color: white;
+  background-color: red;
   font-size: .9em;
   display: block;
+  padding: .4em;
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-bottom: .3em;
   text-align: center;
 }
 
 .form-error {
-  color: red;
-  font-size: .9em;
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+
+.form-success {
+  color: white;
+  background-color: blueviolet;
+  padding: .4em;
+  font-size: 1em;
   display: block;
   text-align: center;
+  margin-left: 1px;
+  margin-right: 1px;
   margin-bottom: 1em;
 }
 

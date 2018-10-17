@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
+import DropDownMenu from './dropdown';
 import './header.css';
 
 class HeaderBar extends React.Component{

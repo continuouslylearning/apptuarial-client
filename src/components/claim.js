@@ -8,13 +8,12 @@ class Claim extends React.Component{
   delete(id){
     return this.props.dispatch(deleteClaim(id))
       .then(() => this.props.closeItem())
-      .then(() => this.props.dispatch(fetchClaims()))
-      .catch(err => err);
+      .then(() => this.props.dispatch(fetchClaims()));
   }
 
   render(){
     const { transactions, closeItem } = this.props;
-    const { id, policyId, accidentDate, paidLoss, caseReserve } = this.props.claim;
+    const { id, policyId, accidentDate, paidLoss, caseReserve, status } = this.props.claim;
     const options = { year: 'numeric', day: 'numeric', month: 'long' };
 
     const transactionsList = transactions.length !== 0 ? 
@@ -34,6 +33,7 @@ class Claim extends React.Component{
         <h2>Claim #{id}</h2>
         <p>Policy Id: {policyId}</p>
         <p>Accident Date: {accidentDate.toLocaleDateString('en-US', options)}</p>
+        <p>Status: {status}</p>
         <p>Paid Loss: {paidLoss}</p>
         <p>Case Reserve: {caseReserve}</p>
         <p>Number of Transactions: {transactions.length === 0? 'None': `${transactions.length}`}</p>

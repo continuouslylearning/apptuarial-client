@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 function ClaimItem(props){
-
   const { id, policyId, status, accidentDate, caseReserve, paidLoss } = props.item;
   const options = props.options;
 
