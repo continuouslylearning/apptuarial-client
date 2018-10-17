@@ -1,7 +1,6 @@
 import React from 'react';
 import { reset, reduxForm } from 'redux-form';
 
-
 export default (formName) => {
 
   class BaseForm extends React.Component {
@@ -20,7 +19,7 @@ export default (formName) => {
     }
 
     onSubmit(values){
-      return this.props.dispatchAction(values)
+      return this.props.onSubmit(values)
         .then(() => this.setState({ showSuccess: true }));
     }
 
@@ -33,7 +32,7 @@ export default (formName) => {
       return (
         <div>
           <h2>{title}</h2>
-          <form className='form' onSubmit={handleSubmit(values => this.addClaim(values))}>
+          <form className='form' onSubmit={handleSubmit(values => this.onSubmit(values))}>
             {successMessage}
             {errorMessage}
             {children}
