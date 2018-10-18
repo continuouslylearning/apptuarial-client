@@ -38,17 +38,15 @@ class ClaimsPage extends React.Component{
   render(){
     const { sortField, hide, isAscending, factor, claims } = this.props;
     const itemId = this.state.itemId;
-    console.log(factor);
 
     let list = hide
       ? claims.filter(claim => claim.status === 'OPEN')
       : claims.slice();
-
-      console.log(sortField);
+      
     if(sortField === 'accidentDate') {
       list.sort((a, b) => (b.accidentDate - a.accidentDate) * factor);
     } else if(sortField === 'caseReserve') {
-      console.log(sortField);
+
       list.sort((a, b) => (b.caseReserve - a.caseReserve) * factor);
     } else {
       list.sort((a, b) => (b.paidLoss - a.paidLoss) * factor);
