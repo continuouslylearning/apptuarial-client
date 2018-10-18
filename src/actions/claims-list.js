@@ -4,10 +4,10 @@ export const setClaimsSortField = field => ({
   field
 });
 
-export const TOGGLE_STATUS_FILTER = 'TOGGLE_STATUS_FILTER';
-export const toggleStatusFilter = checked => ({
-  type: TOGGLE_STATUS_FILTER,
-  checked
+export const TOGGLE_CLAIMS_STATUS_FILTER = 'TOGGLE_STATUS_FILTER';
+export const toggleStatusFilter = hide => ({
+  type: TOGGLE_CLAIMS_STATUS_FILTER,
+  hide
 });
 
 export const SET_CLAIMS_SORT_DIRECTION = 'SET_CLAIMS_SORT_DIRECTION';

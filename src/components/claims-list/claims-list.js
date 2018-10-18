@@ -36,16 +36,16 @@ class ClaimsPage extends React.Component{
   }
 
   render(){
-    const { sortingField, hideClosed, isAscending, factor, claims } = this.props;
+    const { sortField, hide, isAscending, factor, claims } = this.props;
     const itemId = this.state.itemId;
 
-    let list = hideClosed
+    let list = hide
       ? claims.filter(claim => claim.status === 'OPEN')
       : claims.slice();
 
-    if(sortingField === 'accidentDate') {
+    if(sortField === 'accidentDate') {
       list.sort((a, b) => (b.accidentDate - a.accidentDate) * factor);
-    } else if(sortingField === 'caseReserve') {
+    } else if(sortField === 'caseReserve') {
       list.sort((a, b) => (b.caseReserve - a.caseReserve) * factor);
     } else {
       list.sort((a, b) => (b.paidLoss - a.paidLoss) * factor);
@@ -58,7 +58,7 @@ class ClaimsPage extends React.Component{
         <h2>CLAIMS</h2>
         <label htmlFor='sort'>Sort By</label>
         <div className='dropdown'>
-          <select id='sort' value={sortingField} onChange={e => this.sort(e)}>
+          <select id='sort' value={sortField} onChange={e => this.sort(e)}>
             <option value='accidentDate'>Accident Date</option>
             <option value='caseReserve'>Case Reserve</option>
             <option value='paidLoss'>Paid Loss</option>
@@ -69,7 +69,7 @@ class ClaimsPage extends React.Component{
           </select>
         </div>
         <label htmlFor='checkbox'>Show only open claims</label>
-        <input type='checkbox' id='checkbox' checked={hideClosed} onChange={e=> this.toggleChecked(e)}/>
+        <input type='checkbox' id='checkbox' checked={hide} onChange={e=> this.toggleChecked(e)}/>
         <ClaimsList data={list} displayItem={(itemId) => this.displayItem(itemId)}/>
         {itemId ? <Claim item={itemId} closeItem={() => this.displayItem(null)}/> : null}
       </div>
@@ -78,12 +78,12 @@ class ClaimsPage extends React.Component{
 }
 
 const mapStateToProps = state => {
-  const { isAscending, hideClosed, sortingField} = state.claimsList;
+  const { isAscending, hide, sortField} = state.claimsList;
   return {
     claims: state.claims,
     isAscending: isAscending === 'true',
-    hideClosed,
-    sortingField,
+    hide,
+    sortField,
     factor: isAscending === 'true' ? -1 : 1
   };
 };
