@@ -23,7 +23,7 @@ class ClaimsPage extends React.Component{
   }
 
   render(){
-    const { sortField, hide, factor, claims } = this.props;
+    const { sortField, hide, directionFactor, claims } = this.props;
     const itemId = this.state.itemId;
 
     let list = hide
@@ -31,12 +31,12 @@ class ClaimsPage extends React.Component{
       : claims.slice();
 
     if(sortField === 'accidentDate') {
-      list.sort((a, b) => (b.accidentDate - a.accidentDate) * factor);
+      list.sort((a, b) => (b.accidentDate - a.accidentDate) * directionFactor);
     } else if(sortField === 'caseReserve') {
 
-      list.sort((a, b) => (b.caseReserve - a.caseReserve) * factor);
+      list.sort((a, b) => (b.caseReserve - a.caseReserve) * directionFactor);
     } else {
-      list.sort((a, b) => (b.paidLoss - a.paidLoss) * factor);
+      list.sort((a, b) => (b.paidLoss - a.paidLoss) * directionFactor);
     }
 
     return (
@@ -53,10 +53,9 @@ const mapStateToProps = state => {
   const { isAscending, hide, sortField } = state.claimsList;
   return {
     claims: state.claims,
-    isAscending,
     hide,
     sortField,
-    factor: isAscending === 'true' ? -1 : 1
+    directionFactor: isAscending === 'true' ? -1 : 1
   };
 };
 

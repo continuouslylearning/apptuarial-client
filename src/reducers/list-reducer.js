@@ -8,7 +8,7 @@ const listReducer = (constants, initialState) => (state = initialState, action) 
       ...state,
       isAscending: action.isAscending
     };
-  } else if(action.type == constants.SET_SORT_FIELD){
+  } else if(action.type === constants.SET_SORT_FIELD){
     return {
       ...state,
       sortField: action.sortField
