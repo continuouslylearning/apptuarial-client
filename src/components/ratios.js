@@ -40,11 +40,11 @@ class Ratios extends React.Component {
     }
 
     const labels = stats.map(({ year }) => year);
-    const data = stats.map(({ earnedExposures, earnedPremium }) => earnedExposures ? (earnedPremium / earnedExposures).toFixed(2) : 0);
-    const severityData = stats.map(({ reportedLoss, reportedClaims }) => reportedClaims ? (reportedLoss / reportedClaims).toFixed(2) : 0);
-    const frequencyData = stats.map(({reportedClaims, earnedExposures}) => earnedExposures ? (reportedClaims / earnedExposures).toFixed(2) : 0);
-    const lossRatioData = stats.map(({reportedLoss, earnedPremium}) => earnedPremium ? (reportedLoss / earnedPremium).toFixed(2) : 0);
-    const purePremiumData = stats.map(({reportedLoss, earnedExposures}) => earnedExposures ? (reportedLoss / earnedExposures).toFixed(2) : 0);
+    const data = stats.map(stat => computeRatio(stat, 'earnedPremium', 'earnedExposures'));
+    const severityData = stats.map(stat => computeRatio(stat, 'reportedLoss', 'reportedClaims'));
+    const frequencyData = stats.map(stat => computeRatio(stat, 'reportedClaims', 'earnedExposures'));
+    const lossRatioData = stats.map(stat => computeRatio(stat, 'reportedLoss', 'earnedPremium'));
+    const purePremiumData = stats.map(stat => computeRatio(stat, 'reportedLoss', 'earnedExposures'));
 
     return (
       <div className='ratios-page'>
@@ -100,3 +100,9 @@ function claimsReducer(acc, claim, start, end){
     reportedClaims
   };
 }
+
+const computeRatio = (object, numerator, denominator) => {
+  numerator = object[numerator];
+  denominator = object[denominator];
+  return denominator ? ( numerator / denominator).toFixed(2) : 0;
+};

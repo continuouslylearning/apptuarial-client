@@ -11,7 +11,8 @@ header {
   text-align: center;
   padding: 0px;
   background-color:white;
-  /* background-color: lightcoral; */
+  margin-top: .7em;
+  margin-bottom: 3em;
 }
 
 header button { 
@@ -23,3 +24,4 @@ header button {
   height: 2em;
   width: 10em;
 }
+

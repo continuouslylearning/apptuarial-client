@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PolicyItem from './policy-item';
 import Policy from './policy';
 import List from './list';
-import { Link } from 'react-router-dom';
 import { setFilter, setDirection, toggleCheckbox} from '../actions/filter';
 import './list.css';
 
@@ -58,7 +57,6 @@ class PoliciesPage extends React.Component{
  
     return (
       <div className='list'>
-        <Link to='/dashboard'>BACK</Link>
         <h2>POLICIES</h2>
         <div className='sort-area'>
           <label htmlFor='sort'>Sort By</label>

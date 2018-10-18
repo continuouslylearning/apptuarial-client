@@ -11,9 +11,9 @@ class App extends React.Component{
   render(){
 
     return (
-      <div className='container'>
-        <Header/>
-        <Router>
+      <Router>
+        <div className='container'>
+          <Header/>
           <main>
             <Switch>
               <Route component={LandingPage} exact path='/login'/>
@@ -22,8 +22,8 @@ class App extends React.Component{
               <Redirect from='/' to='/login'/>
             </Switch>
           </main>
-        </Router>
-      </div>
+        </div>
+      </Router>
     );
   }
 }

@@ -3,7 +3,7 @@
   background-color: white;
   border: 1px solid blueviolet;
   width: 95%;
-  padding: 3em;
+  padding: 1.5em;
   height: auto;
   top: 50%;
   left: 50%;
@@ -17,11 +17,24 @@
 
 .popup h2, .popup p {
   text-align: left;
-  font-size: .95em;
+  font-size: .80em;
 }
 
 .popup li {
   width: 100%;
+  margin-left: 0px;
+  margin-bottom: 1em;
+  padding: 0px;
+}
+
+.popup .close {
+  margin-left: 0px;
+  float: left;
+}
+
+.popup li p {
+  padding: 0px;
+  margin-left: 0px;
 }
 
 
@@ -37,6 +50,8 @@
   border: 0px;
 }
 
+
+
 .popup .close {
   background-color: blueviolet;
 }
@@ -47,6 +62,9 @@
 
 @media only screen and (min-width: 640px){
 
+  .popup {
+    padding: 3em;
+  }
   .popup h2 {
     font-size: 1.2em;
   }

@@ -1,21 +1,80 @@
 .nav {
-  display: none;
-  background-color: blueviolet;
-  width: 150px;
+  position: static;
+  background-color: white;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  border: 1px solid blueviolet;
+  margin-bottom: .5em;
 }
 
 .nav a {
-  color: white;
+  color: blueviolet;
   display: block;
-  font-size: 1.2em;
+  font-size: 1.1em;
   text-align: center;
-  margin-bottom: 1em;
+  padding: .7em;
 
 }
 
-.nav:hover {
-  display: flex;
-  position: fixed;
-  flex-direction: column;
-  align-items: center;
+.menu-toggle {
+  display: block;
+  font-size: 1.2em;
+  height: 2em;
+  padding: .4em;
+  color: blueviolet;
+  background-color: white;
+  width: 100%;
+  border: 0px;
+  text-align: center;
+}
+
+ul.open {
+  margin-top: 0px;
+  padding-top: 2em;
+  position: absolute;
+  width: 80%;
+  background-color: white;
+  border: 1px solid blueviolet;
+}
+
+ul.closed {
+  display: none;
+}
+
+.nav .logout {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  color: blueviolet;
+  font-size: 1.2em;
+  border: 1px solid white;
+}
+
+.nav .logout:hover {
+  background-color: red;
+  color: white;
+}
+.nav a:hover {
+  color: white;
+  background-color: blueviolet;
+}
+
+
+@media only screen and (min-width: 640px){
+
+  .nav {
+    width: 220px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(+50%,+50%);
+  }
+
+  ul.open {
+    width: 100%;
+  }
+
 }

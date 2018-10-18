@@ -1,24 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { clearAuth } from '../actions/auth';
+import DropdownMenu from './dropdown';
 import './header.css';
 
-class HeaderBar extends React.Component{
+function HeaderBar(props) {
 
-  logout(){
-    this.props.dispatch(clearAuth());
-    localStorage.removeItem('authToken');
-  }
-  render(){
-    const logout = this.props.loggedIn ? <button onClick={() => this.logout()}>LOGOUT</button> : null;
-    return (
-      <header>
-        <h1>Apptuarial</h1>
-        {logout}
-      </header>
-    );
-  }
+  return (
+    <header>
+      <h1>Apptuarial</h1>
+      { props.loggedIn ? <DropdownMenu/> : null } 
+    </header>
+  );
 }
+
 
 const mapStateToProps = state => ({
   loggedIn: state.auth.currentUser !== null
