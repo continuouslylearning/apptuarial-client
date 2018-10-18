@@ -8,7 +8,7 @@ import PolicyForm from './policy-form';
 import AddClaimForm from './add-claim-form';
 import UpdateClaimForm from './update-claim-form';
 import Menu from './menu';
-import Ratio from './ratios';
+import Ratio from './ratios/ratios';
 import { fetchPolicies } from '../actions/policies';
 import { fetchClaims } from '../actions/claims';
 
