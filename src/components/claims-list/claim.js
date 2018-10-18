@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchClaims, deleteClaim } from '../actions/claims';
-import './popup.css';
+import { fetchClaims, deleteClaim } from '../../actions/claims';
+import '../popup.css';
 
 class Claim extends React.Component{
 

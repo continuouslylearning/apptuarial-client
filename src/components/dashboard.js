@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import RequiresLogin from './requires-login';
 import PoliciesList from './policy-list/policy-list';
-import ClaimsList from './claims-list';
+import ClaimsList from './claims-list/claims-list';
 import PolicyForm from './policy-form';
 import AddClaimForm from './add-claim-form';
 import UpdateClaimForm from './update-claim-form';

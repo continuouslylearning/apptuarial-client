@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ClaimItem from './claim-item';
-import List from './list';
+import List from '../list';
 import Claim from './claim';
-import { setClaimsSortField, setClaimsSortDirection, toggleStatusFilter } from '../actions/claims-list';
+import { setClaimsSortField, setClaimsSortDirection, toggleStatusFilter } from '../../actions/claims-list';
 
 class ClaimsPage extends React.Component{
 
