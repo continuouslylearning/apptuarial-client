@@ -58,6 +58,12 @@ button.add {
 
 @media only screen and (min-width: 640px){
 
+  .list .search {
+    margin-left: .5em;
+    height: 3em;
+    text-align: center;
+  }
+
   ul li {
     width: 33.333333%;
   }

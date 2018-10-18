@@ -47,6 +47,7 @@ ul.closed {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 0;
   background-color: white;
   color: blueviolet;
   font-size: 1.2em;

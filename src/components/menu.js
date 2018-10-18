@@ -15,7 +15,6 @@ function Menu(){
       <Link className='item' to='/dashboard/ratios'>Calculate ratios</Link>
     </ul>
   );
-
 }
 
 export default connect()(Menu);

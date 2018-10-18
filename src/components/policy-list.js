@@ -6,13 +6,16 @@ import List from './list';
 import { setFilter, setDirection, toggleCheckbox} from '../actions/filter';
 import './list.css';
 
+const PolicyList = List()(PolicyItem);
+
 class PoliciesPage extends React.Component{
 
   constructor(props){
     super(props);
-    
+
     this.state = {
-      itemId: null
+      itemId: null, 
+      searchTerm: ''
     };
   }
 
@@ -41,10 +44,13 @@ class PoliciesPage extends React.Component{
     const { filter, checked, ascending, factor, policies } = this.props;
 
     const itemId = this.state.itemId;
-
-    let list = checked 
-      ? policies.filter(policy => policy.expirationDate >= new Date()) 
+    let list = this.state.searchTerm
+      ? policies.filter(({ id }) => id.toLowerCase().includes(this.state.searchTerm.toLowerCase())) 
       : policies.slice();
+ 
+    list = checked 
+      ? list.filter(policy => policy.expirationDate >= new Date()) 
+      : list;
 
     if(filter === 'effective') {
       list.sort((a, b) => (b.effectiveDate - a.effectiveDate) * factor);
@@ -53,8 +59,6 @@ class PoliciesPage extends React.Component{
     } else {
       list.sort((a, b) => (b.exposures - a.exposures) * factor);
     }
-
-    const PolicyList = List()(PolicyItem);
  
     return (
       <div className='list'>
@@ -71,7 +75,11 @@ class PoliciesPage extends React.Component{
               <option value='true'>Ascending</option>
               <option value='false'>Descending</option>
             </select>
+            <input type='text' className='search' value={this.state.searchTerm} 
+              onChange={e => this.setState({searchTerm : e.target.value })} placeholder='Search by Policy Id'
+            />
           </div>
+
           <label htmlFor='checkbox'>Show only non-expired policies</label>
           <input type='checkbox' id='checkbox' checked={checked} onChange={e=> this.toggleChecked(e)}/>
         </div>
