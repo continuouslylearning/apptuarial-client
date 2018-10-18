@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ClaimSort from './claim-sort';
 import ClaimItem from './claim-item';
 import List from '../list';
 import Claim from './claim';
-import { setClaimsSortField, setClaimsSortDirection, toggleStatusFilter } from '../../actions/claims-list';
+
+const ClaimsList = List()(ClaimItem);
 
 class ClaimsPage extends React.Component{
 
@@ -20,29 +22,14 @@ class ClaimsPage extends React.Component{
     });
   }
 
-  sort(e){
-    const sortField = e.target.value;
-    this.props.dispatch(setClaimsSortField(sortField));
-  }
-
-  setDirection(e){
-    const isAscending = e.target.value;
-    this.props.dispatch(setClaimsSortDirection(isAscending));
-  }
-
-  toggleChecked(e){
-    const checked = e.target.checked;
-    this.props.dispatch(toggleStatusFilter(checked));
-  }
-
   render(){
-    const { sortField, hide, isAscending, factor, claims } = this.props;
+    const { sortField, hide, factor, claims } = this.props;
     const itemId = this.state.itemId;
 
     let list = hide
       ? claims.filter(claim => claim.status === 'OPEN')
       : claims.slice();
-      
+
     if(sortField === 'accidentDate') {
       list.sort((a, b) => (b.accidentDate - a.accidentDate) * factor);
     } else if(sortField === 'caseReserve') {
@@ -52,25 +39,9 @@ class ClaimsPage extends React.Component{
       list.sort((a, b) => (b.paidLoss - a.paidLoss) * factor);
     }
 
-    const ClaimsList = List()(ClaimItem);
-
     return (
       <div className='list'>
-        <h2>CLAIMS</h2>
-        <label htmlFor='sort'>Sort By</label>
-        <div className='dropdown'>
-          <select id='sort' value={sortField} onChange={e => this.sort(e)}>
-            <option value='accidentDate'>Accident Date</option>
-            <option value='caseReserve'>Case Reserve</option>
-            <option value='paidLoss'>Paid Loss</option>
-          </select>
-          <select id='direction' value={isAscending} onChange={e => this.setDirection(e)}>
-            <option value='true'>Ascending</option>
-            <option value='false'>Descending</option>
-          </select>
-        </div>
-        <label htmlFor='checkbox'>Show only open claims</label>
-        <input type='checkbox' id='checkbox' checked={hide} onChange={e=> this.toggleChecked(e)}/>
+        <ClaimSort/>
         <ClaimsList data={list} displayItem={(itemId) => this.displayItem(itemId)}/>
         {itemId ? <Claim item={itemId} closeItem={() => this.displayItem(null)}/> : null}
       </div>

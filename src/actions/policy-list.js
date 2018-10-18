@@ -14,7 +14,7 @@ export const setPolicySortField = sortField => {
   };
 };
 
-export const togglePolicyFilterStatusFilter = hide => {
+export const togglePolicyStatusFilter = hide => {
   return {
     type: TOGGLE_POLICY_STATUS_FILTER,
     hide
