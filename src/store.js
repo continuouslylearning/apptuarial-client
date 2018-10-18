@@ -8,6 +8,7 @@ import { setAuthToken, authRequestSuccess } from './actions/auth';
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const authToken = localStorage.getItem('authToken');
+
 if(authToken){
   const payload = jwtDecode(authToken);
   store.dispatch(setAuthToken(authToken));

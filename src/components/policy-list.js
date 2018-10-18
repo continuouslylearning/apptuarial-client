@@ -10,6 +10,7 @@ class PoliciesPage extends React.Component{
 
   constructor(props){
     super(props);
+    
     this.state = {
       itemId: null
     };

@@ -13,7 +13,6 @@ function HeaderBar(props) {
   );
 }
 
-
 const mapStateToProps = state => ({
   loggedIn: state.auth.currentUser !== null
 });
