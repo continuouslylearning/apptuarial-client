@@ -1,4 +1,6 @@
-{
+{   "globals": {
+        "React": true
+    },
     "env": {
         "browser": true,
         "es6": true
@@ -15,6 +17,7 @@
         "react"
     ],
     "rules": {
+        "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": 2,
         "indent": [
             "error",

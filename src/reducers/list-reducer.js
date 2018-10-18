@@ -1,7 +1,8 @@
 import { SET_CLAIMS_SORT_DIRECTION, SET_CLAIMS_SORT_FIELD, TOGGLE_CLAIMS_STATUS_FILTER } from '../actions/claims-list';
-
+import { SET_POLICY_SORT_DIRECTION, SET_POLICY_SORT_FIELD, TOGGLE_POLICY_STATUS_FILTER } from '../actions/policy-list';
 
 const listReducer = (constants, initialState) => (state = initialState, action) => {
+  
   if(action.type === constants.SET_SORT_DIRECTION){
     return {
       ...state,
@@ -10,9 +11,9 @@ const listReducer = (constants, initialState) => (state = initialState, action) 
   } else if(action.type == constants.SET_SORT_FIELD){
     return {
       ...state,
-      sortField: action.field
+      sortField: action.sortField
     };
-  } else if(action.type === TOGGLE_CLAIMS_STATUS_FILTER){
+  } else if(action.type === constants.TOGGLE_STATUS_FILTER){
     return {
       ...state,
       hide: action.hide
@@ -23,20 +24,19 @@ const listReducer = (constants, initialState) => (state = initialState, action) 
 
 };
 
-export default listReducer;
-
 const initialClaimsListState = {
   isAscending: false,
   sortField: 'accidentDate',
   hide: false
 };
 
-export const claimsListReducer = listReducer({ 
-  SET_SORT_DIRECTION: SET_CLAIMS_SORT_DIRECTION,
-  SET_SORT_FIELD: SET_CLAIMS_SORT_FIELD,
-  TOGGLE_STATUS_FILTER: TOGGLE_CLAIMS_STATUS_FILTER
-},
-initialClaimsListState
+export const claimsListReducer = listReducer(
+  { 
+    SET_SORT_DIRECTION: SET_CLAIMS_SORT_DIRECTION,
+    SET_SORT_FIELD: SET_CLAIMS_SORT_FIELD,
+    TOGGLE_STATUS_FILTER: TOGGLE_CLAIMS_STATUS_FILTER
+  }, 
+  initialClaimsListState
 );
 
 const initialPolicyListState = {
@@ -46,7 +46,9 @@ const initialPolicyListState = {
 };
 
 export const policyListReducer = listReducer({
-  
+  SET_SORT_DIRECTION: SET_POLICY_SORT_DIRECTION,
+  SET_SORT_FIELD: SET_POLICY_SORT_FIELD,
+  TOGGLE_STATUS_FILTER: TOGGLE_POLICY_STATUS_FILTER
 },
 initialPolicyListState
 );
