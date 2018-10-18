@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PolicyItem from './policy-item';
 import Policy from './policy';
-import List from './list';
-import { setFilter, setDirection, toggleCheckbox} from '../actions/filter';
-import './list.css';
+import List from '../list';
+import { setFilter, setDirection, toggleCheckbox} from '../../actions/filter';
+import '../list.css';
 
 const PolicyList = List()(PolicyItem);
 

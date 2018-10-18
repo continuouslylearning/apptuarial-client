@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import DropdownMenu from '../dropdown';
+import DropdownMenu from '../dropdown/dropdown';
 import './header.css';
 
 function HeaderBar(props) {

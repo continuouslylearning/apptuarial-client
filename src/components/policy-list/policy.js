@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchPolicies, deletePolicy } from '../actions/policies';
-import { fetchClaims } from '../actions/claims';
-import './popup.css';
+import { fetchPolicies, deletePolicy } from '../../actions/policies';
+import { fetchClaims } from '../../actions/claims';
+import '../popup.css';
 
 class Policy extends React.Component{
 
