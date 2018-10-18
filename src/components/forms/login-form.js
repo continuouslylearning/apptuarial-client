@@ -1,11 +1,11 @@
 import React from 'react';
-import Input from './input';
+import Input from '../input';
 import { connect } from 'react-redux';
 import { Field } from 'redux-form';
 import { Link } from 'react-router-dom';
-import { login } from '../actions/auth';
-import { required } from '../validators';
-import BaseForm from './form';
+import { login } from '../../actions/auth';
+import { required } from '../../validators';
+import BaseForm from '../form';
 
 const BaseLoginForm = BaseForm('login');
 

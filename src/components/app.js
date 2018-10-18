@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LandingPage from './landing-page';
-import RegistrationForm from './registration-form';
+import RegistrationForm from './forms/registration-form';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import Dashboard from './dashboard';
 import Header from './headerbar/header';
