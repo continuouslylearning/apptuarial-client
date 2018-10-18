@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import RequiresLogin from './requires-login';
 import PoliciesList from './policy-list/policy-list';
 import ClaimsList from './claims-list/claims-list';
@@ -22,13 +22,16 @@ class Dashboard extends React.Component {
   render(){
     return (
       <div>
-        <Route component={PolicyForm} exact path='/dashboard/policies/add'/>
-        <Route component={PoliciesList} path='/dashboard/policies/list'/>
-        <Route component={ClaimsList} path='/dashboard/claims/list'/>
-        <Route component={Ratio} path='/dashboard/ratios'/>
-        <Route component={AddClaimForm} exact path='/dashboard/claims/add'/>
-        <Route component={UpdateClaimForm} exact path='/dashboard/claims/update'/>
-        <Route component={Menu} exact path='/dashboard'/>
+        <Switch>
+          <Route component={PolicyForm} exact path='/dashboard/policies/add'/>
+          <Route component={PoliciesList} path='/dashboard/policies/list'/>
+          <Route component={ClaimsList} path='/dashboard/claims/list'/>
+          <Route component={Ratio} path='/dashboard/ratios'/>
+          <Route component={AddClaimForm} exact path='/dashboard/claims/add'/>
+          <Route component={UpdateClaimForm} exact path='/dashboard/claims/update'/>
+          <Route component={Menu} exact path='/dashboard'/>
+          <Redirect to='/dashboard'/>
+        </Switch>
       </div>
     );
   }
