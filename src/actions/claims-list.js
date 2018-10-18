@@ -1,7 +1,7 @@
 export const SET_CLAIMS_SORT_FIELD = 'SET_CLAIMS_SORT_FIELD';
-export const setClaimsSortField = field => ({
+export const setClaimsSortField = sortField => ({
   type: SET_CLAIMS_SORT_FIELD,
-  field
+  sortField
 });
 
 export const TOGGLE_CLAIMS_STATUS_FILTER = 'TOGGLE_STATUS_FILTER';

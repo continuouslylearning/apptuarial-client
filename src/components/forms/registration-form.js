@@ -8,7 +8,6 @@ import Input from '../input';
 import BaseForm from '../form';
 import { Redirect } from 'react-router-dom';
 import { required, trimmed, match } from '../../validators';
-import '../form.css';
 
 const matchPassword = match('password');
 const BaseRegistrationForm = BaseForm('registration');

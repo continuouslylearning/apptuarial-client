@@ -21,13 +21,13 @@ class ClaimsPage extends React.Component{
   }
 
   sort(e){
-    const sortingField = e.target.value;
-    this.props.dispatch(setClaimsSortField(sortingField));
+    const sortField = e.target.value;
+    this.props.dispatch(setClaimsSortField(sortField));
   }
 
   setDirection(e){
-    const ascending = e.target.value;
-    this.props.dispatch(setClaimsSortDirection(ascending));
+    const isAscending = e.target.value;
+    this.props.dispatch(setClaimsSortDirection(isAscending));
   }
 
   toggleChecked(e){
@@ -38,14 +38,17 @@ class ClaimsPage extends React.Component{
   render(){
     const { sortField, hide, isAscending, factor, claims } = this.props;
     const itemId = this.state.itemId;
+    console.log(factor);
 
     let list = hide
       ? claims.filter(claim => claim.status === 'OPEN')
       : claims.slice();
 
+      console.log(sortField);
     if(sortField === 'accidentDate') {
       list.sort((a, b) => (b.accidentDate - a.accidentDate) * factor);
     } else if(sortField === 'caseReserve') {
+      console.log(sortField);
       list.sort((a, b) => (b.caseReserve - a.caseReserve) * factor);
     } else {
       list.sort((a, b) => (b.paidLoss - a.paidLoss) * factor);
@@ -78,10 +81,10 @@ class ClaimsPage extends React.Component{
 }
 
 const mapStateToProps = state => {
-  const { isAscending, hide, sortField} = state.claimsList;
+  const { isAscending, hide, sortField } = state.claimsList;
   return {
     claims: state.claims,
-    isAscending: isAscending === 'true',
+    isAscending,
     hide,
     sortField,
     factor: isAscending === 'true' ? -1 : 1

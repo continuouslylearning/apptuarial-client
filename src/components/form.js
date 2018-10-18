@@ -1,5 +1,6 @@
 import React from 'react';
 import { reset, reduxForm } from 'redux-form';
+import './form.css';
 
 export default (formName) => {
 
@@ -7,7 +8,7 @@ export default (formName) => {
     
     constructor(props){
       super(props);
-      
+
       this.state = {
         showSuccess: false
       };
