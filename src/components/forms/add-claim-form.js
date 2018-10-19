@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field } from 'redux-form';
-import Input from '../input';
-import BaseForm from '../form';
+import Input from './input';
+import BaseForm from './form';
 import { fetchClaims, addClaim } from '../../actions/claims';
 import { required } from '../../validators';
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Sort from '../sort';
-import { setClaimsSortDirection, setClaimsSortField, toggleStatusFilter } from '../../actions/claims-list';
+import { setClaimsSortDirection, setClaimsSortField, toggleStatusFilter, searchClaims } from '../../actions/claims-list';
 
 const mapStateToProps = state => {
   const { isAscending, hide, sortField } = state.claimsList;
@@ -23,7 +23,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   setSortField: value => dispatch(setClaimsSortField(value)),
   setDirection: value => dispatch(setClaimsSortDirection(value)),
-  toggleFilter: value => dispatch(toggleStatusFilter(value))
+  toggleFilter: value => dispatch(toggleStatusFilter(value)),
+  search: value => dispatch(searchClaims(value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sort);

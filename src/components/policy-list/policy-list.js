@@ -26,11 +26,11 @@ class PoliciesPage extends React.Component{
 
   render(){
 
-    const { sortField, hide, directionFactor, policies } = this.props;
+    const { sortField, hide, directionFactor, policies, searchTerm } = this.props;
     const itemId = this.state.itemId;
 
-    let list = this.state.searchTerm
-      ? policies.filter(({ id }) => id.includes(this.state.searchTerm)) 
+    let list = searchTerm
+      ? policies.filter(({ id }) => id.includes(searchTerm)) 
       : policies.slice();
  
     list = hide ? list.filter(policy => policy.expirationDate >= new Date()) : list;
@@ -54,12 +54,13 @@ class PoliciesPage extends React.Component{
 }
 
 const mapStateToProps = state => {
-  const { hide, sortField, isAscending } = state.policyList;
+  const { hide, sortField, isAscending, searchTerm } = state.policyList;
   return {
     policies: state.policies,
     hide,
     sortField,
-    directionFactor: isAscending === 'true' ? -1 : 1
+    directionFactor: isAscending === 'true' ? -1 : 1,
+    searchTerm
   };
 };
 

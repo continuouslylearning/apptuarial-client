@@ -1,10 +1,10 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import { connect } from 'react-redux';
-import Input from '../input';
+import Input from './input';
 import { addPolicy, fetchPolicies } from '../../actions/policies';
 import { required, moreThan } from '../../validators';
-import BaseForm from '../form';
+import BaseForm from './form';
 
 const moreThanEffectiveDate = moreThan('effectiveDate');
 

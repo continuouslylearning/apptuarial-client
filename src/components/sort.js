@@ -14,8 +14,12 @@ export default class Sort extends React.Component {
     this.props.toggleFilter(e.target.checked);
   }
 
+  search(e){
+    this.props.search(e.target.value);
+  }
+
   render(){
-    const { sortField, isAscending, hide, title, searchPlaceHolder, checkboxLabel } = this.props;
+    const { sortField, isAscending, hide, title, searchPlaceHolder, checkboxLabel, searchTerm } = this.props;
     const options = this.props.options.map(({ text, value}, index) => <option key={index} value={value}>{text}</option>);
     
     return (
@@ -31,7 +35,7 @@ export default class Sort extends React.Component {
               <option value='true'>Ascending</option>
               <option value='false'>Descending</option>
             </select>
-            <input type='text' className='search' placeholder={searchPlaceHolder}/>
+            <input type='text' className='search' value={searchTerm} onChange={e => this.search(e)}placeholder={searchPlaceHolder}/>
           </div>
           <label htmlFor='checkbox'>{checkboxLabel}</label>
           <input type='checkbox' id='checkbox' checked={hide} onChange={e=> this.toggleFilter(e)}/>

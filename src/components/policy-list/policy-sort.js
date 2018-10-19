@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Sort from '../sort';
-import { setPolicySortDirection, setPolicySortField, togglePolicyStatusFilter } from '../../actions/policy-list';
+import { setPolicySortDirection, setPolicySortField, togglePolicyStatusFilter, policySearch } from '../../actions/policy-list';
 
 const mapStateToProps = state => ({
   isAscending: state.policyList.isAscending,
@@ -19,7 +19,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setSortField: value => dispatch(setPolicySortField(value)),
   setDirection: value => dispatch(setPolicySortDirection(value)),
-  toggleFilter: value => dispatch(togglePolicyStatusFilter(value))
+  toggleFilter: value => dispatch(togglePolicyStatusFilter(value)),
+  search: value => dispatch(policySearch(value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sort);

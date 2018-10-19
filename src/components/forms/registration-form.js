@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { Field, SubmissionError } from 'redux-form';
 import { registerUser } from '../../actions/users';
 import { login } from '../../actions/auth';
-import Input from '../input';
-import BaseForm from '../form';
+import Input from './input';
+import BaseForm from './form';
 import { Redirect } from 'react-router-dom';
 import { required, trimmed, match } from '../../validators';
 

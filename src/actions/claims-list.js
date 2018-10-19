@@ -15,3 +15,9 @@ export const setClaimsSortDirection = isAscending => ({
   type: SET_CLAIMS_SORT_DIRECTION,
   isAscending
 });
+
+export const CLAIMS_SEARCH = 'SEARCH_CLAIMS';
+export const searchClaims = searchTerm => ({
+  type: CLAIMS_SEARCH,
+  searchTerm
+});

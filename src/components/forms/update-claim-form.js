@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field } from 'redux-form';
-import Input from '../input';
+import Input from './input';
 import { fetchClaims, updateClaim } from '../../actions/claims';
 import { required } from '../../validators';
-import BaseForm from '../form';
+import BaseForm from './form';
 
 const BaseUpdateClaimForm = BaseForm('updateClaim');
 
