@@ -11,3 +11,8 @@ export function normalizeResponseError(res){
   }
   return res.json();
 }
+
+export function formatDate(date){
+  const options = { year: 'numeric', day: 'numeric', month: 'long' };
+  return date.toLocaleDateString('en-US', options);
+}

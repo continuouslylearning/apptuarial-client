@@ -6,6 +6,7 @@ const mapStateToProps = state => ({
   isAscending: state.policyList.isAscending,
   hide: state.policyList.hide,
   sortField: state.policyList.sortField, 
+  searchTerm: state.policyList.searchTerm,
   title: 'POLICIES',
   options: [
     { value: 'effectiveDate', text: 'Effective Date'},

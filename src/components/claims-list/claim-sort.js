@@ -3,12 +3,13 @@ import Sort from '../sort';
 import { setClaimsSortDirection, setClaimsSortField, toggleStatusFilter, searchClaims } from '../../actions/claims-list';
 
 const mapStateToProps = state => {
-  const { isAscending, hide, sortField } = state.claimsList;
+  const { isAscending, hide, sortField, searchTerm } = state.claimsList;
 
   return {
     isAscending,
     hide,
     sortField, 
+    searchTerm,
     title: 'CLAIMS',
     options: [
       { value: 'accidentDate', text: 'Accident Date'},

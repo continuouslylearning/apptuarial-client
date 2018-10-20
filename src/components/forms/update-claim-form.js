@@ -33,14 +33,14 @@ class UpdateClaimForm extends React.Component{
     
     return (
       <BaseUpdateClaimForm title='RECORD PAID LOSS OR CHANGE CASS RESERVE' onSubmit={values => this.updateClaim(values)}>
-        <Field component={Input} type='date' label='Transaction Date' name='transactionDate' validate={[required]}/>
         <Field component={Input} element='select' label='Choose ID of an Existing Claim' name='claimId' validate={[required]}>
           <option value=''></option>
           {options}
         </Field>
+        <Field component={Input} type='date' label='Transaction Date' name='transactionDate' validate={[required]}/>
         <Field component={Input} label='Record a Loss Payment' type='number' name='lossPayment' min='0' validate={[required]}/>
         <Field component={Input} label='Update the Case Reserve' type='number' name='caseReserve' min='0' validate={[required]}/>
-        <Field component={Input} className='checkbox' label='Close the Claim?' type='checkbox' name='status' min='0'/>
+        <Field component={Input} className='checkbox' label='Close the Claim?' type='checkbox' name='status'/>
       </BaseUpdateClaimForm>
     );
   }

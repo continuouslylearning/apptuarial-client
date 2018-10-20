@@ -4,12 +4,13 @@ form {
   border: black 5px;
 }
 
-form input {
+form input, form select {
   display: block;
   margin-bottom: 2em;
-  margin-left: 0px;
-  margin-right: 0px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 
 form button {
   font-size: 1em;
@@ -33,8 +34,6 @@ form button {
   font-size: .9em;
   display: block;
   padding: .4em;
-  margin-left: 1px;
-  margin-right: 1px;
   margin-bottom: .3em;
   text-align: center;
 }
@@ -60,14 +59,22 @@ form button {
   display: block;
 }
 
-.input .field {
+.input .field, .input select {
   margin-top: .2em;
   margin-bottom: 1.5em;
-  width: 20em;
+  width: 22em;
   text-align: center;
   height: 3em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+.input select {
+  text-align-last: center;
+}
+.form .date {
+  font-size: .8em;
+}
 
 h2 {
   font-size: 2em;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default class Sort extends React.Component {
-  
+
   sort(e){
     this.props.setSortField(e.target.value);
   }
@@ -35,7 +35,7 @@ export default class Sort extends React.Component {
               <option value='true'>Ascending</option>
               <option value='false'>Descending</option>
             </select>
-            <input type='text' className='search' value={searchTerm} onChange={e => this.search(e)}placeholder={searchPlaceHolder}/>
+            <input type='text' className='search' value={searchTerm} onChange={e => this.search(e)} placeholder={searchPlaceHolder}/>
           </div>
           <label htmlFor='checkbox'>{checkboxLabel}</label>
           <input type='checkbox' id='checkbox' checked={hide} onChange={e=> this.toggleFilter(e)}/>

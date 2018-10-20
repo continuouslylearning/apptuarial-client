@@ -22,8 +22,8 @@ class PolicyForm extends React.Component {
       <BasePolicyForm title='ADD NEW POLICY' onSubmit={(values) => this.addPolicy(values)}>
         <Field component={Input} type='date' label='Effective Date' name='effectiveDate' validate={[required]}/>
         <Field component={Input} type='date' label='Expiration Date' name='expirationDate' validate={[required, moreThanEffectiveDate]}/>
-        <Field component={Input} type='number' label='Premium' name='premium' min='0' required={true}/>
-        <Field component={Input} type='number' label='Exposures' name='exposures' min='0'/>
+        <Field component={Input} type='number' label='Premium' name='premium' min='0' validate={[required]}/>
+        <Field component={Input} type='number' label='Exposures' name='exposures' min='1' validate={[required]}/>
       </BasePolicyForm>
     );
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchPolicies, deletePolicy } from '../../actions/policies';
 import { fetchClaims } from '../../actions/claims';
+import { formatDate } from '../../utils/utils';
 import '../popup.css';
 
 class Policy extends React.Component{
@@ -16,14 +17,13 @@ class Policy extends React.Component{
   render(){
     const { claims, closeItem } = this.props;
     const { id, effectiveDate, expirationDate, exposures, premium } = this.props.policy;
-    const options = { year: 'numeric', day: 'numeric', month: 'long' };
 
     const claimsList = claims.length !== 0 ? 
       <ul>
         {claims.map(({id, accidentDate, paidLoss, status, caseReserve}) => 
           <li key={id}>
             <b>{`Claim # ${id}`}</b>
-            <p>Accident Date: {accidentDate.toLocaleDateString('en-US', options)}</p>
+            <p>Accident Date: {formatDate(accidentDate)}</p>
             <p>Status: {status} </p>
             <p>Paid Loss: {paidLoss}</p>
             <p>Case Reserve: {caseReserve}</p>
@@ -35,8 +35,8 @@ class Policy extends React.Component{
     return (
       <div className='popup'>
         <h2>Policy #{id}</h2>
-        <p>Effective Date: {effectiveDate.toLocaleDateString('en-US', options)}</p>
-        <p>Expiration Date: {expirationDate.toLocaleDateString('en-US', options)}</p>
+        <p>Effective Date: {formatDate(effectiveDate)}</p>
+        <p>Expiration Date: {formatDate(expirationDate)}</p>
         <p>Exposure: {exposures}</p>
         <p>Premium: {premium}</p>
         <p>Number of Claims: {claims.length === 0? 'None': `${claims.length}`}</p>

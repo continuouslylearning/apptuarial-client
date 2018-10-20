@@ -9,3 +9,11 @@ export const moreThan = field => (value, allValues) => field in allValues && val
 export const match = field => (value, allValues) => field in allValues && value.trim() === allValues[field] 
   ? undefined 
   : `Must match ${field}`;
+
+export const notWithinPolicyPeriod = (field, data) => (value, allValues) => {
+  if(!(field in allValues)) return undefined;
+  const choiceId = allValues[field];
+  const policy = data.find(({ id }) => id === choiceId);
+  value = new Date(value);
+  return value > policy.effectiveDate && value < policy.expirationDate ? undefined : 'Accident date is not covered by the policy';
+};
