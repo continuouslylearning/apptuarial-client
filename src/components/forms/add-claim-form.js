@@ -71,8 +71,10 @@ class AddClaimForm extends React.Component {
             <option value=''></option>
             {options}
           </Field>
-          {choice ? <p className='date'>Effective Date: {formatDate(choice.effectiveDate)}</p> : null}
-          {choice ? <p className='date'>Expiration Date: {formatDate(choice.expirationDate)}<br/><br/></p> : null } 
+          <div aria-live='polite'>
+            {choice ? <p className='date'>Effective Date: {formatDate(choice.effectiveDate)}</p> : null}
+            {choice ? <p className='date'>Expiration Date: {formatDate(choice.expirationDate)}<br/><br/></p> : null } 
+          </div>
           <Field component={Input} type='date' label='Accident Date' name='accidentDate' validate={[required, invalidAccidentDate]}/>
           <Field component={Input} type='number' label='Case Reserve' name='caseReserve' min='1' validate={[required]}/>
         </BaseAddClaimForm>

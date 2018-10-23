@@ -14,6 +14,9 @@ export const notWithinPolicyPeriod = (field, data) => (value, allValues) => {
   if(!(field in allValues)) return undefined;
   const choiceId = allValues[field];
   const policy = data.find(({ id }) => id === choiceId);
+  console.log(policy.expirationDate);
+
   value = new Date(value);
-  return value > policy.effectiveDate && value < policy.expirationDate ? undefined : 'Accident date is not covered by the policy';
+  console.log(value);
+  return value >= policy.effectiveDate && value <= policy.expirationDate ? undefined : 'Accident date is not covered by the policy';
 };

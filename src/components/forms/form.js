@@ -35,8 +35,10 @@ export default (formName) => {
         <div>
           <h2>{title}</h2>
           <form className='form' onSubmit={handleSubmit(values => this.onSubmit(values))}>
-            {successMessage}
-            {errorMessage}
+            <div aria-live='polite'>
+              {successMessage}
+              {errorMessage}
+            </div>
             {children}
             <button type='submit' disabled={pristine || submitting}>SUBMIT</button>
           </form>
