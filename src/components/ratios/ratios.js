@@ -11,7 +11,7 @@ class Ratios extends React.Component {
 
     let stats = [];
 
-    for(let i = currentYear - 4; i <= currentYear; i++){
+    for(let i = currentYear - 3; i <= currentYear; i++){
       const year = i;
       const start = new Date(year, 0);
       const end = new Date(year + 1, 0);
