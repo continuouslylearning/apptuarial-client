@@ -5,7 +5,7 @@ import { FETCH_POLICIES_SUCCESS } from '../actions/policies';
 import { FETCH_CLAIMS_SUCCESS } from '../actions/claims';
 import { policyListReducer, claimsListReducer } from './list-reducer';
 
-function policiesReducer(state = [], action){
+export function policiesReducer(state = [], action){
   if(action.type === FETCH_POLICIES_SUCCESS){
     return action.policies.map(policy => ({
       ...policy,
@@ -16,7 +16,7 @@ function policiesReducer(state = [], action){
   return state;
 }
 
-function claimsReducer(state = [], action){
+export function claimsReducer(state = [], action){
   if(action.type === FETCH_CLAIMS_SUCCESS){
     return action.claims.map(claim => ({
       ...claim,

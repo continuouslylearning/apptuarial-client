@@ -1,6 +1,6 @@
 import { AUTH_REQUEST, AUTH_REQUEST_SUCCESS, AUTH_REQUEST_ERROR, CLEAR_AUTH, SET_AUTH_TOKEN } from '../actions/auth';
 
-const initialState = {
+export const initialState = {
   error: null, 
   loading: false,
   authToken: null,
@@ -14,7 +14,7 @@ export default function(state = initialState, action){
     return {
       ...state,
       loading: true,
-      error: false
+      error: null
     };
   case SET_AUTH_TOKEN:
     return {

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { formatDate } from '../../utils/utils';
 
-function ClaimItem(props){
+export function ClaimItem(props){
   const { id, policyId, status, accidentDate, caseReserve, paidLoss } = props.item;
 
   return (

@@ -4,7 +4,7 @@ import { fetchClaims, deleteClaim } from '../../actions/claims';
 import { formatDate } from '../../utils/utils';
 import '../popup.css';
 
-class Claim extends React.Component{
+export class Claim extends React.Component{
 
   delete(id){
     return this.props.dispatch(deleteClaim(id))

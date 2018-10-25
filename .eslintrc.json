@@ -1,5 +1,9 @@
 {   "globals": {
-        "React": true
+        "React": true,
+        "describe": true,
+        "it": true,
+        "expect": true,
+        "jest": true
     },
     "env": {
         "browser": true,

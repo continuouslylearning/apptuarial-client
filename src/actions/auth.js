@@ -51,3 +51,26 @@ export const login = (username, password) => dispatch => {
       return Promise.reject(new SubmissionError({ _error: err.message }));
     });
 };
+
+export const refresh = () => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/auth/refresh`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${authToken}`
+    }
+  })
+    .then(res => normalizeResponseError(res))
+    .then(({authToken}) => {
+      const currentUser = jwtDecode(authToken).user;
+      dispatch(setAuthToken(authToken));
+      dispatch(authRequestSuccess(currentUser));
+      localStorage.setItem('authToken', authToken);
+    })
+    .catch(err => {
+      dispatch(authRequestError(err));
+      dispatch(clearAuth());
+      localStorage.removeItem('authToken');
+    });
+
+};

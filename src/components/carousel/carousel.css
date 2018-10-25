@@ -1,0 +1,11 @@
+.carousel {
+  width: 100%;
+}
+
+.slides {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+}

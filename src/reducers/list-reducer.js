@@ -29,7 +29,7 @@ const listReducer = (constants, initialState) => (state = initialState, action) 
 
 };
 
-const initialClaimsListState = {
+export const initialClaimsListState = {
   isAscending: false,
   sortField: 'accidentDate',
   hide: false, 
@@ -46,7 +46,7 @@ export const claimsListReducer = listReducer(
   initialClaimsListState
 );
 
-const initialPolicyListState = {
+export const initialPolicyListState = {
   isAscending: false,
   sortField: 'effectiveDate',
   hide: false,

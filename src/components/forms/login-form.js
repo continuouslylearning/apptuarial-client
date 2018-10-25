@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { login } from '../../actions/auth';
 import { required } from '../../validators';
 import BaseForm from './form';
+import Info from '../landing-info';
 
 const BaseLoginForm = BaseForm('login');
 
@@ -19,11 +20,12 @@ class LoginForm extends React.Component {
   render(){
     return(
       <div>
-        <BaseLoginForm title='LOGIN' onSubmit={values => this.login(values)}>
+        <BaseLoginForm title='LOGIN' onSubmit={values => this.login(values)} login={true}>
           <Field component={Input} label='Username' type='text' name='username' validate={[required]}/>
           <Field component={Input} label='Password' type='password' name='password' validate={[required]} />
         </BaseLoginForm>
         <Link className='form-link' to='/register'>Register</Link>
+        <Info/>
       </div>
     );
   }

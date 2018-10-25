@@ -31,11 +31,11 @@ export default class Sort extends React.Component {
             <select id='sort' value={sortField} onChange={e => this.sort(e)}>
               {options}
             </select>
-            <select id='direction' value={isAscending} onChange={e => this.setDirection(e)}>
+            <select aria-label="Set sort direction" id='direction' value={isAscending} onChange={e => this.setDirection(e)}>
               <option value='true'>Ascending</option>
               <option value='false'>Descending</option>
             </select>
-            <input type='text' className='search' value={searchTerm} onChange={e => this.search(e)} placeholder={searchPlaceHolder}/>
+            <input aria-label='Search by Policy Id' type='text' className='search' value={searchTerm} onChange={e => this.search(e)} placeholder={searchPlaceHolder}/>
           </div>
           <label htmlFor='checkbox'>{checkboxLabel}</label>
           <input type='checkbox' id='checkbox' checked={hide} onChange={e=> this.toggleFilter(e)}/>

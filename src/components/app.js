@@ -5,8 +5,35 @@ import RegistrationForm from './forms/registration-form';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import Dashboard from './dashboard';
 import Header from './headerbar/header';
-
+import { refresh } from '../actions/auth';
 class App extends React.Component{
+
+  componentDidUpdate(prevProps) {
+
+    if (!prevProps.loggedIn && this.props.loggedIn) {
+      this.startPeriodicRefresh();
+    } else if (prevProps.loggedIn && !this.props.loggedIn) {
+      this.stopPeriodicRefresh();
+    }
+  }
+
+  componentWillUnmount() {
+    this.stopPeriodicRefresh();
+  }
+
+  startPeriodicRefresh() {
+    this.refreshInterval = setInterval(
+      () => this.props.dispatch(refresh()),
+      60 * 60 * 1000
+    );
+  }
+
+  stopPeriodicRefresh() {
+    if (!this.refreshInterval) {
+      return;
+    }
+    clearInterval(this.refreshInterval);
+  }
 
   render(){
 

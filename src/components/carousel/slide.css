@@ -1,0 +1,37 @@
+.slide {
+  width: 90%;
+  text-align: center;
+  border: 1px dotted rgba(151,187,205,0.5);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+  height: 450px;
+}
+
+.slide h3 {
+  font-size: 1.2em;
+  margin-bottom: .5em;
+}
+
+.slide p {
+  font-size: .7em;
+  margin-bottom: 1.5em;
+}
+
+.slide button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: .5em;
+  border: 0px;
+  background-color: rgb(185, 0, 0);
+  color: white;
+  height: 3em;
+  width: 100%;
+}
+@media only screen and (min-width: 640px){
+
+  .slide {
+    width: 30%;
+  }
+}

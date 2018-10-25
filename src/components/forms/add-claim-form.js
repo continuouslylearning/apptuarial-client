@@ -13,7 +13,7 @@ import { formatDate } from '../../utils/utils';
 const BaseAddClaimForm = BaseForm('addClaim');
 const AddedClaimsList = List()(ClaimItem);
 
-class AddClaimForm extends React.Component {
+export class AddClaimForm extends React.Component {
   
   constructor(props){
     super(props);
@@ -67,7 +67,7 @@ class AddClaimForm extends React.Component {
     return(
       <div>
         <BaseAddClaimForm title='ADD A NEW CLAIM' onSubmit={(values) => this.addClaim(values)}>
-          <Field component={Input} onChange={e => this.choose(e)}element='select' label='Policy ID' name='policyId' validate={[required]}>
+          <Field component={Input} onChange={e => this.choose(e)} element='select' label='Policy ID' name='policyId' validate={[required]}>
             <option value=''></option>
             {options}
           </Field>
