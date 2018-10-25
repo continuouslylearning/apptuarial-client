@@ -1,9 +1,11 @@
 {   "globals": {
         "React": true,
         "describe": true,
+        "beforeEach": true,
         "it": true,
         "expect": true,
-        "jest": true
+        "jest": true,
+        "global": true
     },
     "env": {
         "browser": true,

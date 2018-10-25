@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import DropdownMenu from '../dropdown/dropdown';
 import './header.css';
 
-function HeaderBar(props) {
+export function HeaderBar(props) {
 
   return (
     <header>

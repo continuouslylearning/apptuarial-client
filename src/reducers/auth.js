@@ -19,7 +19,6 @@ export default function(state = initialState, action){
   case SET_AUTH_TOKEN:
     return {
       ...state,
-      loading: false,
       authToken: action.authToken
     };
   case AUTH_REQUEST_SUCCESS:

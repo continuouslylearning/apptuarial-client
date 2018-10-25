@@ -33,7 +33,7 @@ export const deleteClaim = id => (dispatch, getState) => {
 };
 
 export const FETCH_CLAIMS_SUCCESS = 'FETCH_CLAIMS_SUCCESS';
-const fetchClaimsSuccess = claims => ({
+export const fetchClaimsSuccess = claims => ({
   type: FETCH_CLAIMS_SUCCESS,
   claims
 });
