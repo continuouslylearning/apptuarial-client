@@ -41,7 +41,7 @@ export class App extends React.Component{
       <Router>
         <div className='container'>
           <Header/>
-          <main>
+          <main role='main'>
             <Switch>
               <Route component={LandingPage} exact path='/login'/>
               <Route component={RegistrationForm} exact path='/register'/>
