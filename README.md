@@ -35,4 +35,14 @@ The front end was built with:
  - MongoDB
  - Mocha & Chai
  
- ## Screenshots
+## Screenshots
+
+## Source code
+This client source code is available in this repository.
+ - The Reacts components are inside `src/components`
+ - The Redux actions are inside `src/actions`
+ - The reducer functions are inside `src/reducers
+
+The API server source code is available in [this repository](https://github.com/continuouslylearning/apptuarial-server)
+ - The API routes are inside [the routes folder](https://github.com/continuouslylearning/apptuarial-server/tree/master/routes)
+ - The Mongoose models are inside [the models folder](https://github.com/continuouslylearning/apptuarial-server/tree/master/routes)
