@@ -42,7 +42,7 @@ The front end was built with:
 
 ## Source code
 This client source code is available in this repository.
- - The Reacts components are inside `src/components`
+ - The React components are inside `src/components`
  - The Redux actions are inside `src/actions`
  - The reducer functions are inside `src/reducers`
 
