@@ -23,7 +23,7 @@ To install this application locally:
   - Run `npm start` inside the client project folder to start up the React application
   - Run `npm start` inside the API project folder to start up the API server
 
-## Tech Stack
+## Tech stack
 The front end was built with:
  - React
  - Redux
