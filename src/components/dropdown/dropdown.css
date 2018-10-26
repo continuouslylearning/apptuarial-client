@@ -55,7 +55,7 @@ ul.closed {
 }
 
 .nav .logout:hover {
-  background-color: red;
+  background-color: rgb(185, 0, 0);
   color: white;
 }
 .nav a:hover {
