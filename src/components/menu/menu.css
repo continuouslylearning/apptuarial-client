@@ -1,4 +1,16 @@
-ul.menu {
+.menu {
+  width: 100%;
+}
+
+.slides {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.menu {
   font-size: 2.1em;
   width: 100%;
   min-height: 80vh;
@@ -9,30 +21,3 @@ ul.menu {
   align-content: start;
 }
 
-
-.menu .item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  margin: .2em;
-  height: 3.5em;
-  color: white;
-  border-radius: 3px;
-  font-weight: bold;
-  background-color: blueviolet;
-}
-
-.menu .item:hover {
-  background-color: lightgrey;
-}
-
-@media only screen and (min-width: 640px){
-
-  .menu .item {
-    width: 30%;
-    margin: .5em 1.66667%;
-    padding: 0px;
-  }
-
-}

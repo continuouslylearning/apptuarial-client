@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 import { login } from '../../actions/auth';
 import { required } from '../../validators';
 import BaseForm from './form';
-import Info from '../landing-info';
+import Info from '../landing-page/landing-info';
 
 const BaseLoginForm = BaseForm('login');
 
-class LoginForm extends React.Component {
+export class LoginForm extends React.Component {
 
   login(values){
     const { username, password } = values;

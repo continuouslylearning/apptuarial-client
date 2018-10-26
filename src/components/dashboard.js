@@ -12,7 +12,7 @@ import Ratio from './ratios/ratios';
 import { fetchPolicies } from '../actions/policies';
 import { fetchClaims } from '../actions/claims';
 
-class Dashboard extends React.Component {
+export class Dashboard extends React.Component {
 
   componentDidMount(){
     this.props.dispatch(fetchPolicies());

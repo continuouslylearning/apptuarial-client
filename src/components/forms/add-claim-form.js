@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field } from 'redux-form';
-import List from '../list';
+import List from '../base-list/list';
 import ClaimItem from '../claims-list/claim-item';
 import Claim from '../claims-list/claim';
 import Input from './input';

@@ -5,7 +5,7 @@ import Input from './input';
 import { addPolicy, fetchPolicies } from '../../actions/policies';
 import { required, moreThan } from '../../validators';
 import BaseForm from './form';
-import List from '../list';
+import List from '../base-list/list';
 import PolicyItem from '../policy-list/policy-item';
 import Policy from '../policy-list/policy';
 
@@ -13,7 +13,7 @@ const moreThanEffectiveDate = moreThan('effectiveDate');
 const BasePolicyForm = BaseForm('policy');
 const NewPolicyList = List()(PolicyItem);
 
-class PolicyForm extends React.Component {
+export class PolicyForm extends React.Component {
 
   constructor(props){
     super(props);

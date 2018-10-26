@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ClaimSort from './claim-sort';
 import ClaimItem from './claim-item';
-import List from '../list';
+import List from '../base-list/list';
 import Claim from './claim';
 
 const ClaimsList = List()(ClaimItem);
 
-class ClaimsPage extends React.Component{
+export class ClaimsPage extends React.Component{
 
   constructor(props){
     super(props);

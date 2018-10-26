@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PolicyItem from './policy-item';
 import Policy from './policy';
-import List from '../list';
+import List from '../base-list/list';
 import PolicySort from './policy-sort';
-import '../list.css';
+import '../base-list/list.css';
 
 const PolicyList = List()(PolicyItem);
 
-class PoliciesPage extends React.Component{
+export class PoliciesPage extends React.Component{
 
   constructor(props){
     super(props);

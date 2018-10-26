@@ -6,14 +6,14 @@ import { registerUser } from '../../actions/users';
 import { login } from '../../actions/auth';
 import Input from './input';
 import BaseForm from './form';
-import Info from '../landing-info';
+import Info from '../landing-page/landing-info';
 import { Redirect } from 'react-router-dom';
 import { required, trimmed, match } from '../../validators';
 
 const matchPassword = match('password');
 const BaseRegistrationForm = BaseForm('registration');
 
-class RegistrationForm extends React.Component {
+export class RegistrationForm extends React.Component {
 
   registerUser(values){
     const { username, password } = values;
