@@ -6,6 +6,6 @@ import { UpdateClaimForm } from './update-claim-form';
 describe('<UpdateClaimForm/>', () => {
 
   it('should render without crashing', () => {
-    shallow(<UpdateClaimForm/>);
+    shallow(<UpdateClaimForm claims={[]}/>);
   });
 });

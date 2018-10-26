@@ -5,7 +5,7 @@ import { fetchClaims } from '../../actions/claims';
 import { formatDate } from '../../utils/utils';
 import '../popup.css';
 
-class Policy extends React.Component{
+export class Policy extends React.Component{
 
   delete(id){
     return this.props.dispatch(deletePolicy(id))
