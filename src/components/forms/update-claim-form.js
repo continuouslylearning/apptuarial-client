@@ -8,7 +8,7 @@ import BaseForm from './form';
 
 const BaseUpdateClaimForm = BaseForm('updateClaim');
 
-class UpdateClaimForm extends React.Component{
+export class UpdateClaimForm extends React.Component{
 
   updateClaim(values){
     const { claimId, transactionDate, lossPayment, caseReserve, status } = values;
