@@ -19,7 +19,7 @@ registerUser.mockImplementation(() => {
 
 
 describe('<RegistrationForm/>', () => {
-  const dispatch = jest.fn(action => Promise.resolve());
+  const dispatch = jest.fn().mockImplementation(() => Promise.resolve());
 
   it('should render without crashing', () => {
     shallow(<RegistrationForm/>);
@@ -40,12 +40,14 @@ describe('<RegistrationForm/>', () => {
   it('should dispatch register user and login actions when registerUser method is called', () => {
     const user = { username: 'anonymous', password: 'password'};
     const wrapper = shallow(<RegistrationForm loggedIn={false} dispatch={dispatch}/>);
-    wrapper.instance().registerUser(user);
-    // expect(dispatch.mock.calls[0][0]).toEqual({
-    //   type: 'REGISTER_USER'
-    // });
-    expect(dispatch.mock.calls[1][0]).toEqual({
-      type: 'LOGIN'
-    });
+    return wrapper.instance().registerUser(user)
+      .then(() => {
+        expect(dispatch.mock.calls[0][0]).toEqual({
+          type: 'REGISTER_USER'
+        });
+        expect(dispatch.mock.calls[1][0]).toEqual({
+          type: 'LOGIN'
+        });
+      });
   });
 });

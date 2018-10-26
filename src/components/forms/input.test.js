@@ -4,9 +4,8 @@ import Input from './input';
 
 
 describe('<Input/>', () => {
-  const dispatch = jest.fn();
 
   it('should render without crashing', () => {
-    shallow(<Input/>);
+    shallow(<Input input={{}} meta={{}}/>);
   });
 });
