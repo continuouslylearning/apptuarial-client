@@ -21,7 +21,7 @@ export class Dashboard extends React.Component {
 
   render(){
     return (
-      <main role='main'>
+      <div>
         <Switch>
           <Route component={PolicyForm} exact path='/dashboard/policies/add'/>
           <Route component={PoliciesList} path='/dashboard/policies/list'/>
@@ -32,7 +32,7 @@ export class Dashboard extends React.Component {
           <Route component={Menu} exact path='/dashboard'/>
           <Redirect to='/dashboard'/>
         </Switch>
-      </main>
+      </div>
     );
   }
 }
