@@ -4,7 +4,7 @@ import './info.css';
 export default function Info(){
 
   return (
-    <section className='info'>
+    <section className='info' role='contentinfo'>
       <div className='box'>
         <p>Insert your policy and claims records into the database</p>
       </div>

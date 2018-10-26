@@ -29,7 +29,7 @@ class DropdownMenu extends React.Component{
     const open = this.state.open;
 
     return (
-      <nav className='nav' onMouseLeave={() => this.toggle()}>
+      <nav role='navigation' className='nav' onMouseLeave={() => this.toggle()}>
         <button className='menu-toggle' onClick={() => this.toggle()}>MENU</button> 
         <ul className={open ? 'open' : 'closed'}>
           <Link to='/dashboard/policies/list'>VIEW POLICIES</Link>

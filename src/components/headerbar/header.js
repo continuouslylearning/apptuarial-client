@@ -6,7 +6,7 @@ import './header.css';
 export function HeaderBar(props) {
 
   return (
-    <header>
+    <header role='banner'>
       <h1>Apptuarial</h1>
       { props.loggedIn ? <DropdownMenu/> : null } 
     </header>
