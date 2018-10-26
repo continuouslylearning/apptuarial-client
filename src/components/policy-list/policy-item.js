@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { formatDate } from '../../utils/utils';
 
 
-function PolicyItem(props){
+export function PolicyItem(props){
   const { id, effectiveDate, expirationDate, exposures, premium } = props.item;
 
   return (
