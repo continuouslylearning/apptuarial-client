@@ -4,6 +4,7 @@ import LandingPage from './landing-page/landing-page';
 import RegistrationForm from './forms/registration-form';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import Dashboard from './dashboard';
+import Demo from './demo';
 import Header from './headerbar/header';
 import { refresh } from '../actions/auth';
 export class App extends React.Component{
@@ -43,6 +44,7 @@ export class App extends React.Component{
           <Header/>
           <main role='main'>
             <Switch>
+              <Route component={Demo} exact path='/demo' />
               <Route component={LandingPage} exact path='/login'/>
               <Route component={RegistrationForm} exact path='/register'/>
               <Route component={Dashboard} path='/dashboard'/>

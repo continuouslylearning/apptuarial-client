@@ -7,6 +7,7 @@ import { policyListReducer, claimsListReducer } from './list-reducer';
 
 export function policiesReducer(state = [], action){
   if(action.type === FETCH_POLICIES_SUCCESS){
+    console.log(action, 'action');
     return action.policies.map(policy => ({
       ...policy,
       effectiveDate: new Date(policy.effectiveDate),

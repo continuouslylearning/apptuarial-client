@@ -26,6 +26,19 @@ form button {
   display: block;
   text-align: center;
   margin-top: 1em;
+  color: rgb(138, 43, 226);
+}
+
+.demo-link {
+  display: block;
+  text-align: center;
+  margin-top: 1em;
+  text-decoration: none;
+  color: rgb(138, 43, 226);
+}
+
+.form-link, .demo-link {
+  font-size: 1.5em;
 }
 
 .error, .form-error {

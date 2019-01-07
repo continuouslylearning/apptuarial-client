@@ -20,12 +20,13 @@ export class LoginForm extends React.Component {
   render(){
     return(
       <div>
+        <Info/>
         <BaseLoginForm title='LOGIN' onSubmit={values => this.login(values)} login={true}>
           <Field component={Input} label='Username' type='text' name='username' validate={[required]}/>
           <Field component={Input} label='Password' type='password' name='password' validate={[required]} />
         </BaseLoginForm>
         <Link className='form-link' to='/register'>Register</Link>
-        <Info/>
+        <Link className='demo-link' to='/demo'>Try the Demo Account</Link>
       </div>
     );
   }

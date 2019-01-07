@@ -1,6 +1,7 @@
 .info {
   height: auto;
   margin-top: 4em;
+  margin-bottom: 4em;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -25,6 +26,10 @@
 
 
 @media only screen and (min-width: 640px){
+
+  .info {
+    margin-top: 8em;
+  }
 
   .box {
     width: 33.333333%;

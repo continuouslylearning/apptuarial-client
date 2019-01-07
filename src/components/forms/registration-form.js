@@ -28,13 +28,13 @@ export class RegistrationForm extends React.Component {
 
     return(
       <div>
+        <Info/>
         <BaseRegistrationForm title='REGISTER' onSubmit={values => this.registerUser(values)} login={true}>
           <Field component={Input} type='text' label='Username' name='username' validate={[required, trimmed]}/>
           <Field component={Input} type='password' label='Password' name='password' validate={[required, trimmed]}/>          
           <Field component={Input} type='password' label='Confirm password' name='passwordConfirm' validate={[required, matchPassword]}/>
         </BaseRegistrationForm>
         <Link className='form-link' to='/login'>Login</Link>
-        <Info/>
       </div>
     );
   }
